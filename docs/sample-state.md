@@ -2,7 +2,7 @@
 {
   currentUser: {
     id: 1,
-    username: "Ron Burgundy"
+    username: "Buzz Aldrin"
   },
   forms: {
     signUp: {errors: []},
@@ -12,8 +12,9 @@
     entities: {
       1: {
         id: 1,
-        title: "Luxury Condo with Pool",
-        price: "160",
+        title: "Mars Red Spot",
+        price: "3000",
+        planet: "mars",
         lng: "41.23123",
         lat: "51.324234234",
         room_type: "Entire home/apt",
@@ -22,12 +23,13 @@
       },
       23: {
         id: 23,
-        title: "Wayne Manor",
-        description: "Only 10 miles outside of Gotham City.",
-        address: "1007 Mountain Drive, Gotham",
+        title: "Europa",
+        description: "There are living things here!",
+        address: "1 Europa Drive",
+        planet: "europa",
         lng: "1.23123",
         lat: "1.324234234",
-        rules: "No basement access!",
+        rules: "No walking on the ice",
         host_id: 2,
         price: "1500",
         prop_type: "House",
@@ -37,7 +39,7 @@
         beds: 20,
         amenities: {
           wifi: true,
-          gym: true,
+          gym: false,
           heating: true,
           tv: true,
           fireplace: true,
@@ -52,8 +54,8 @@
     "1": {
       id: 2,
       room_id: 23,
-      reviewer_name: "Tony Stark",
-      body: "Too dark and damp",
+      reviewer_name: "Marvin",
+      body: "Mars is better",
       rating: 4
     }
   },
@@ -61,9 +63,9 @@
     entities: {
       26: {
         id: 23,
-        title: "Spiderman's Forest Hills Home",
-        check_in: 06/15/2017,
-        check_out: 06/18/2017,
+        title: "Marvin's Place on Mars",
+        check_in: 07/17/2017,
+        check_out: 09/18/2017,
         guests: 2
       }
     }
