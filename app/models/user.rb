@@ -29,6 +29,9 @@ class User < ApplicationRecord
 
   def reset_token!
     self.session_token = gen_token
+    while User.exists?(session_token: self.session_token)
+      self.session_token = gen_token
+    end
     self.save!
     self.session_token
   end

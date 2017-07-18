@@ -1,6 +1,7 @@
 import React from 'react';
 import GreetingsContainer from './greeting/greetings_container';
 import SessionFormContainer from './session/session_forms_container';
+import { AuthRoute } from '../util/route_util';
 import { Route } from 'react-router-dom';
 
 const App = () => (
@@ -9,8 +10,8 @@ const App = () => (
       <h1>Welcom to Space BnB</h1>
       <GreetingsContainer/>
     </header>
-    <Route path="/login" component={SessionFormContainer} />
-    <Route path="/signup" component={SessionFormContainer} />
+    <AuthRoute path="/login" component={SessionFormContainer} />
+    <AuthRoute path="/signup" component={SessionFormContainer} />
   </div>
 );
 

@@ -8,14 +8,24 @@ import { login, logout, signup } from './actions/session_actions';
 ///
 
 document.addEventListener('DOMContentLoaded', () => {
-  const store = configureStore();
-  window.store = store;
-  window.dispatch = store.dispatch;
-  window.getState = store.getState;
+  let store;
+  if (window.currentUser) {
+    const preloadedState = { session: { currentUser: window.currentUser } };
+    store = configureStore(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = configureStore();
+  }
+
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store }/>, root);
 });
+
+// const store = configureStore();
+// window.store = store;
+// window.dispatch = store.dispatch;
+// window.getState = store.getState;
 //
 // window.login = login;
 // window.signup = signup;
