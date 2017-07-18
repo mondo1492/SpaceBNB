@@ -14,22 +14,23 @@ export const receiveErrors = errors => ({
 });
 
 export const login = user => dispatch => {
+  console.log(APIUtil.login(user));
   return APIUtil.login(user).then(
     response => dispatch(receiveCurrentUser(response)),
-    errors => dispatch(receiveErrors(errors.responseJson))
+    errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
 
 export const signup = user => dispatch => {
   return APIUtil.signup(user).then(
     response => dispatch(receiveCurrentUser(response)),
-    errors => dispatch(receiveErrors(errors.responseJson))
+    errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
 
 export const logout = () => dispatch => {
   return APIUtil.logout().then(
     () => dispatch(receiveCurrentUser(null)),
-    errors => dispatch(receiveErrors(errors.responseJson))
+    errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
