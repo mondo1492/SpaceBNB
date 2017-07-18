@@ -39,5 +39,3 @@ class User < ApplicationRecord
     self.session_token ||= gen_token
   end
 end
-
-#has comments
