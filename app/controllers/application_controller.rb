@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :signed_in?, :current_user
-  before_action :require_logged_in #correct?
 
   private
 
@@ -14,12 +13,12 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def login
+  def login!(user)
     @current_user = user
     session[:session_token] = user.reset_token!
   end
 
-  def logout
+  def logout!
     current_user.try(:reset_token!)
     session[:session_token] = nil
   end
@@ -28,5 +27,3 @@ class ApplicationController < ActionController::Base
     render json: ['invalid credentials'], status: 401 if !current_user
   end
 end
-
-#has comments
