@@ -4,7 +4,7 @@
 
 [Trello link][trello]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://space-bnb.herokuapp.com
 [trello]: https://trello.com/b/ZUAmgrLI/spacebnb
 
 ## Minimum Viable Product
