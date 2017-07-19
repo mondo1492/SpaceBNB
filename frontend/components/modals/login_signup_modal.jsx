@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 class LoginSignupModal extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       modalOpen: false,
@@ -14,26 +14,27 @@ class LoginSignupModal extends React.Component {
   }
 
   closeModal() {
-    this.setState({ modalOpen: false })
+    this.setState({ modalOpen: false });
   }
 
   openModal() {
-    this.setState({ modalOpen: true })
+    this.setState({ modalOpen: true });
   }
 
   render() {
     return(
       <button onClick={this.openModal}>Open Me!</button>
 
-      <Modal
-        isOpen={this.state.modalOpen}
-        onRequestClose={this.closeModal} >
 
-          <h2>Im a modal!</h2>
-          <p>modal modal modal modal modal</p>
-          <p>mooooooooodal!</p>
-
-      </Modal>
     );
   }
 }
+// <Modal
+//   isOpen={this.state.modalOpen}
+//   onRequestClose={this.closeModal} >
+//
+//     <h2>Im a modal!</h2>
+//     <p>modal modal modal modal modal</p>
+//     <p>mooooooooodal!</p>
+//
+// </Modal>

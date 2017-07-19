@@ -5,16 +5,17 @@ import { withRouter } from 'react-router';
 
 import { login, signup } from '../../actions/session_actions';
 
-const mapStateToProps = ({ session }, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps);
   return {
-    loggedIn: Boolean(session.currentUser),
-    errors: session.errors,
-    formType: (ownProps.match.path === "/login") ? 'login' : 'signup'
+    loggedIn: Boolean(state.session.currentUser),
+    errors: state.session.errors,
+    formType: ownProps.formType
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const action = (ownProps.match.path === "/login") ? login : signup;
+  const action = (ownProps.formType === "login") ? login : signup;
 
   return {
     processForm: user => dispatch(action(user)),
@@ -26,3 +27,6 @@ export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(SessionForm));
+  // const action = (ownProps.match.path === "/login") ? login : signup;
+    // formType: ownProps
+//
