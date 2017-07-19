@@ -5,17 +5,33 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
-        username: "",
-        password: ""
+        user: {
+          username: "",
+          password: ""
+        },
+        formType: this.props.formType
       };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
+    if (this.state.formType !== nextProps.formType) {
+      this.props.resetErrors();
+      this.setState({
+        user: {
+          username: "",
+          password: ""
+        },
+        formType: nextProps.formType
+      }, ()=>console.log(this.state));
+    }
+
     if (nextProps.loggedIn) {
       this.props.history.push('/');
     }
+
   }
+
 
   navLink() {
     if (this.props.formType === 'login') {
@@ -27,14 +43,14 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, {user: this.state});
+    const user = Object.assign({}, {user: this.state.user});
     this.props.processForm(user);
   }
 
   update(field) {
   return e => this.setState({
-    [field]: e.currentTarget.value
-    });
+    user: Object.assign(this.state.user, { [field]: e.currentTarget.value })
+  });
   }
 
   renderErrors() {
@@ -61,7 +77,7 @@ class SessionForm extends React.Component {
               <br/>
               <label>Username:
                 <input type="text"
-                  value={this.state.username}
+                  value={this.state.user.username}
                   onChange={this.update('username')}
                   className="login-input"
                 />
@@ -69,7 +85,7 @@ class SessionForm extends React.Component {
               <br/>
               <label>Password:
                 <input type="password"
-                  value={this.state.password}
+                  value={this.state.user.password}
                   onChange={this.update('password')}
                   className="login-input"
                 />
@@ -83,4 +99,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default SessionForm;

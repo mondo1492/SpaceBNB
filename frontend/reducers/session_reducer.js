@@ -20,7 +20,7 @@ const sessionReducer = (state = defaultState, action) => {
       return nextState;
     case RECEIVE_ERRORS:
       let errors = action.errors;
-      nextState = merge({}, state, { errors });
+      nextState = merge({}, { currentUser: state.currentUser }, { errors });
       return nextState;
     default:
       return state;
