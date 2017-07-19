@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
+import SessionFormContainer from '../session/session_forms_container';
 
 const currentSessionLinks = () => (
   <nav className="login-signup">
