@@ -13,7 +13,7 @@ class SessionForm extends React.Component {
         formType: this.props.formType
       };
     this.handleSubmit = this.handleSubmit.bind(this);
-    // console.console.log(this.state.formType);
+    this.defaultUser = this.defaultUser.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,16 +27,11 @@ class SessionForm extends React.Component {
         formType: nextProps.formType
       });
     }
-
     if (nextProps.loggedIn) {
       this.props.resetErrors();
       this.props.history.push('/');
     }
-
   }
-
-
-
 
   handleSubmit(e) {
     e.preventDefault();
@@ -49,6 +44,18 @@ class SessionForm extends React.Component {
     user: Object.assign(this.state.user, { [field]: e.currentTarget.value })
   });
   }
+
+  defaultUser(e) {
+    const guestUser = Object.assign({}, { user: {username:"VIP Guest User", password:"SuperSecretPassword"}});
+    this.props.guestLogin(guestUser);
+  }
+
+  defaultUserButton() {
+    return(
+      <button id="defaultUser" onClick={this.defaultUser}>Guest Login</button>
+    );
+  }
+
 
   renderErrors() {
     return(
@@ -66,14 +73,16 @@ class SessionForm extends React.Component {
     const loginOrSignUp = this.state.formType === 'login' ? 'Log in' : 'Sign up';
     return (
       <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
+        <div className="login-form-box">
           {this.renderErrors()}
           <div className="login-form">
-                <input type="text"
+                <input autoFocus
+                  type="text"
                   value={this.state.user.username}
                   onChange={this.update('username')}
                   className="login-input"
                   placeholder="Username"
+
                 />
                 <input type="password"
                   value={this.state.user.password}
@@ -81,9 +90,13 @@ class SessionForm extends React.Component {
                   className="login-input"
                   placeholder="Password"
                 />
-              <input type="submit" value={loginOrSignUp} />
+              <button onClick={this.handleSubmit}>{loginOrSignUp}</button>
+              <div className="or">or</div>
+              {this.defaultUserButton()}
             </div>
-          </form>
+
+          </div>
+
       </div>
     );
   }

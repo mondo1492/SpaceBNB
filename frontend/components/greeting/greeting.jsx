@@ -30,20 +30,17 @@ class Greeting extends React.Component {
 
   onModalClose() {
     this.setState({ modalOpen: false});
-  }
-
-  currentSessionLinks() {
-    return (
-      <nav className="login-signup">
-        <Link to='/login'>Login!</Link>
-        &nbsp;or&nbsp;
-        <Link to='/signup'>Sign up!</Link>
-      </nav>
-    );
+    this.props.resetErrors();
   }
 
   componentWillReceiveProps(nextProps) {
-    this.onModalClose();
+
+    if (this.props.errors.length > 1) {
+      this.props.resetErrors();
+    }
+    if (nextProps.currentUser) {
+      this.onModalClose();
+    }
   }
 
   newSessionLinks() {
@@ -62,34 +59,49 @@ class Greeting extends React.Component {
           </button>
 
           <button className="link" onClick={this.handleClick.bind(this, true)}>
-            <h4>Sign In</h4>
+            <h4>Log In</h4>
           </button>
 
       </nav>
     );
   }
-  personalGreeting(currentUser, logout, resetErrors) {
+  currentSession(currentUser, logout, resetErrors) {
     return (
-      <hgroup className="header-group">
-        <h2 className="header-name">Hi, {currentUser.username}!</h2>
-        <button className="header-button" onClick={resetErrors, logout}>Log Out</button>
-      </hgroup>
+      <nav>
+        <button className="link" onClick={this.handleClick}>
+          <h4>Become a Host</h4>
+        </button>
+        <button className="link" onClick={this.handleClick}>
+          <h4>Help</h4>
+        </button>
+
+        <button className="header-button" onClick={resetErrors, logout}>
+          <h4>Log Out</h4>
+        </button>
+        <button>
+          <img src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500516308/users_oq566g.svg" height="30" width="30"></img>
+        </button>
+
+
+      </nav>
     );
   }
+
+
 
   switchType() {
     if (this.state.signIn) {
       return (
-        <div>
+        <div className="switch" >
           <h4>Don't have an account?</h4>
-          <button className="highlight" onClick={this.handleClick.bind(this, false)}>Sign up</button>
+          <input type="submit" onClick={this.handleClick.bind(this, false)} value={"Sign up"}></input>
         </div>
       );
     } else {
       return (
-        <div>
+        <div className="switch">
           <h4>Already have an Spacebnb account?</h4>
-          <button className="highlight" onClick={this.handleClick.bind(this, true)}>Log in</button>
+          <input type="submit" onClick={this.handleClick.bind(this, true)} value={"Log in"}></input>
         </div>
       );
     }
@@ -97,24 +109,25 @@ class Greeting extends React.Component {
 
   render() {
     const { currentUser, logout, resetErrors } = this.props;
-    const leftDisplay = currentUser ? this.personalGreeting(currentUser, logout, resetErrors) : this.newSessionLinks();
+    const leftDisplay = currentUser ? this.currentSession(currentUser, logout, resetErrors) : this.newSessionLinks();
     const form = (this.state.signIn) ? <SessionFormContainer formType={"login"}/> : <SessionFormContainer formType={"signup"}/>;
     const switchType = this.switchType();
-  return(
+    return(
       <section className="header">
         <div className="left-header-group">
           <img src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500430834/rocketLogo_ap6uiz.svg" height="40" width="40"></img>
-          <h2>Search Bar</h2>
+          <input type="text" name="search" placeholder="Search.."></input>
         </div>
         <div className="right-header-group">
           { leftDisplay }
           <Modal
             isOpen={this.state.modalOpen}
             onRequestClose={this.onModalClose}
-            style={ModalStyle}
+            className="modal"
+            overlayClassName="modal-overlay"
             contentLabel="auth_form">
 
-            <button onClick={this.onModalClose}>X</button>
+            <button className="X" onClick={this.onModalClose}>&times;</button>
             {form}
             {switchType}
           </Modal>

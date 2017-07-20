@@ -13,5 +13,13 @@
  *= require_self
  */
 
+ * {
+   font-family: sans-serif;
+   outline: none;
+ }
+
+@import './components/colors.scss';
 @import './components/header.scss';
 @import './components/modal.scss';
+@import './components/session-form.scss';
+@import './components/left_lower_nav.scss';
