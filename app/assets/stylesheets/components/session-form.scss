@@ -47,6 +47,8 @@
   justify-content: center;
   flex-direction: row;
   align-items: center;
+  height: 20px;
+  padding-bottom: 20px;
 
 }
 .switch > h4 {
@@ -61,7 +63,8 @@
   background: none;
   color: #2B3E42;
   font-family: sans-serif;
-  font-size: 22px;
+  font-size: 17px;
+  text-decoration: underline;
   font-weight: lighter;
 }
 
@@ -72,10 +75,12 @@
 
 .X {
   cursor: pointer;
+  // padding-top: -20px;
   outline: none;
   color: black;
   border: none;
   background: none;
+  position: absolute;
   font-size: 40px;
   font-weight: lighter;
 }
@@ -93,6 +98,7 @@
   flex-direction: column;
   align-items: center;
   list-style-type: none;
+  max-height: 0px;
 }
 
 .login-form-box> ul > li {
