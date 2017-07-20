@@ -23,7 +23,8 @@
 
   }
   button:focus {
-    padding-bottom: 8px;
-    border-bottom: 2px solid $green-grey;
+    color: $light-blue;
+    padding-bottom: 9px;
+    border-bottom: 2px solid $light-blue;
   }
 }

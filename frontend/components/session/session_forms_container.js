@@ -6,7 +6,6 @@ import { withRouter } from 'react-router';
 import { login, signup } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
   return {
     loggedIn: Boolean(state.session.currentUser),
     errors: state.session.errors,
@@ -27,6 +26,3 @@ export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(SessionForm));
-  // const action = (ownProps.match.path === "/login") ? login : signup;
-    // formType: ownProps
-//

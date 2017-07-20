@@ -46,7 +46,7 @@ class SessionForm extends React.Component {
   }
 
   defaultUser(e) {
-    const guestUser = Object.assign({}, { user: {username:"VIP Guest User", password:"SuperSecretPassword"}});
+    const guestUser = Object.assign({}, { user: {username:"Guest User", password:"SuperSecretPassword"}});
     this.props.guestLogin(guestUser);
   }
 
@@ -55,7 +55,6 @@ class SessionForm extends React.Component {
       <button id="defaultUser" onClick={this.defaultUser}>Guest Login</button>
     );
   }
-
 
   renderErrors() {
     return(
@@ -82,7 +81,6 @@ class SessionForm extends React.Component {
                   onChange={this.update('username')}
                   className="login-input"
                   placeholder="Username"
-
                 />
                 <input type="password"
                   value={this.state.user.password}
@@ -94,22 +92,10 @@ class SessionForm extends React.Component {
               <div className="or">or</div>
               {this.defaultUserButton()}
             </div>
-
           </div>
-
       </div>
     );
   }
 }
 
 export default SessionForm;
-
-  // // Please {this.props.formType} or {this.navLink()}
-  //
-  // navLink() {
-  //   if (this.props.formType === 'login') {
-  //     return <Link to="/signup">sign up instead</Link>;
-  //   } else {
-  //     return <Link to="/login">log in instead</Link>;
-  //   }
-  // }
