@@ -6,6 +6,13 @@ export const addRoom = room => (
   })
 );
 
+export const showAllRooms = room => (
+  $.ajax({
+    method: 'GET',
+    url: 'api/rooms'
+  })
+);
+
 export const deleteRoom = room => (
   $.ajax({
     method: 'DELETE',

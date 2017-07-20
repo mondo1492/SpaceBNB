@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import SessionReducer from './session_reducer';
-import RoomReducer from './session_reducer';
+import RoomsReducer from './rooms_reducer';
 
 const rootReducer = combineReducers({
   session: SessionReducer,
-  room: RoomReducer
+  rooms: RoomsReducer
 });
 
 export default rootReducer;

@@ -1,4 +1,5 @@
 export const RECEIVE_ROOM = 'RECEIVE_ROOM';
+export const RECEIVE_ROOMS = 'RECEIVE_ROOM';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 import * as APIRoomUtil from '../util/room_api_util';
 
@@ -6,6 +7,11 @@ import * as APIRoomUtil from '../util/room_api_util';
 export const receiveRoom = room => ({
   type: RECEIVE_ROOM,
   room
+});
+
+export const receiveRooms = rooms => ({
+  type: RECEIVE_ROOMS,
+  rooms
 });
 
 export const receiveErrors = errors => ({
@@ -30,6 +36,14 @@ export const editRoom = room => dispatch => {
 export const showRoom = () => dispatch => {
   return APIRoomUtil.showRoom().then(
     response => dispatch(receiveRoom(null)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );
+};
+
+
+export const showAllRooms = () => dispatch => {
+  return APIRoomUtil.showAllRooms().then(
+    response => dispatch(receiveRooms(response)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };

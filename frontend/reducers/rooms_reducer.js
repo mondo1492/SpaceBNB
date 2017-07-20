@@ -1,11 +1,11 @@
 import merge from 'lodash/merge';
 import {
-  RECEIVE_ROOM,
+  RECEIVE_ROOMS,
   RECEIVE_ERRORS
 } from '../actions/room_actions';
 
 const defaultState = Object.freeze({
-  entities: null,
+  entities: [],
   errors: []
 });
 
@@ -14,9 +14,9 @@ const roomReducer = (state = defaultState, action) => {
   let nextState;
 
   switch(action.type) {
-    case RECEIVE_ROOM:
-      let entities = action.entities;
-      nextState = merge({}, defaultState, { entities });
+    case RECEIVE_ROOMS:
+      let entities = action.rooms;
+      nextState = merge({}, state, { entities });
       return nextState;
     case RECEIVE_ERRORS:
       let errors = action.errors;
