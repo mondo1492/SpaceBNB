@@ -52,7 +52,7 @@ class SessionForm extends React.Component {
 
   defaultUserButton() {
     return(
-      <button id="defaultUser" onClick={this.defaultUser}>Guest Login</button>
+      <button id="defaultUser" type="" onClick={this.defaultUser}>Guest Login</button>
     );
   }
 
@@ -74,7 +74,7 @@ class SessionForm extends React.Component {
       <div className="login-form-container">
         <div className="login-form-box">
           {this.renderErrors()}
-          <div className="login-form">
+          <form className="login-form">
                 <input autoFocus
                   type="text"
                   value={this.state.user.username}
@@ -91,7 +91,7 @@ class SessionForm extends React.Component {
               <button onClick={this.handleSubmit}>{loginOrSignUp}</button>
               <div className="or">or</div>
               {this.defaultUserButton()}
-            </div>
+            </form>
           </div>
       </div>
     );

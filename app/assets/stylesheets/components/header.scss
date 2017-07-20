@@ -25,15 +25,17 @@ body {
  .right-header-group > nav {
    display: flex;
    flex-direction: row;
-   height: 50px;
+   height: 60px;
    button {
      cursor: pointer;
      outline: none;
      border: none;
      background: none;
-     padding: 10px;
+     text-decoration: none;
+     padding-top: 10px;
      padding-right: 15px;
      padding-left: 15px;
+
      //question about no underline on div
      h4 {
        font-family: sans-serif;
@@ -45,10 +47,11 @@ body {
      img {
        padding-top: 8px;
      }
-     :hover {
-       padding-bottom: 8px;
-       border-bottom: 2px solid grey;
-     }
+
+   }
+   button:hover {
+     padding-bottom: 10px;
+     border-bottom: 2px solid grey;
    }
  }
 

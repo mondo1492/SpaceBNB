@@ -1,12 +1,11 @@
 ```js
 {
-  currentUser: {
+  session: {
+    currentUser: {
     id: 1,
     username: "Buzz Aldrin"
-  },
-  forms: {
-    signUp: {errors: []},
-    logIn: {errors: []},
+    }
+    errors:[] 
   },
   rooms: {
     entities: {
