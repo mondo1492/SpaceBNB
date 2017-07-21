@@ -6,7 +6,7 @@ export const addRoom = room => (
   })
 );
 
-export const showAllRooms = room => (
+export const showAllRooms = () => (
   $.ajax({
     method: 'GET',
     url: 'api/rooms'

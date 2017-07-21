@@ -5,6 +5,7 @@ import { AuthRoute } from '../util/route_util';
 import { Route, Switch } from 'react-router-dom';
 import  LeftLowerNav  from './nav_bar/left_lower_nav';
 import MainDisplayContainer from './main_display/main_display_container';
+import CreateRoomContainer from './rooms/room_container';
 
 const App = () => (
   <div>
@@ -13,7 +14,7 @@ const App = () => (
       <LeftLowerNav/>
     </header>
     <MainDisplayContainer />
-
+    <CreateRoomContainer/>
   </div>
 );
 
