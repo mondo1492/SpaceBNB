@@ -74,6 +74,7 @@ class Greeting extends React.Component {
         </button>
         <button>
           <img src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500516308/users_oq566g.svg" height="30" width="30"></img>
+
         </button>
       </nav>
     );
@@ -113,10 +114,12 @@ class Greeting extends React.Component {
     return(
       <section className="header">
         <div className="left-header-group">
+          <Link to='/'>
           <img
             src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500430834/rocketLogo_ap6uiz.svg"
             height="40" width="40">
           </img>
+        </Link>
           <input type="text" name="search" placeholder="Search.."></input>
         </div>
         <div className="right-header-group">

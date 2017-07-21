@@ -6,7 +6,7 @@ import Select from 'react-select';
 
 import DropForm from './image_drop';
 
-class CreateRoom extends React.Component {
+class SubmitRoom extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
@@ -191,7 +191,7 @@ class CreateRoom extends React.Component {
   }
 }
 
-export default CreateRoom;
+export default SubmitRoom;
 
 // <input
 //   type="text"
