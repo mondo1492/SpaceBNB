@@ -13,9 +13,10 @@ const App = () => (
       <GreetingsContainer/>
       <LeftLowerNav/>
     </header>
-
-    <Route exact path="/" component={ MainDisplayContainer } />
-    <ProtectedRoute path="/create" component={ CreateRoomContainer }/>
+    <Switch>
+      <Route exact path="/" component={ MainDisplayContainer } />
+      <ProtectedRoute path="/create" component={ CreateRoomContainer }/>
+    </Switch>
   </div>
 );
 

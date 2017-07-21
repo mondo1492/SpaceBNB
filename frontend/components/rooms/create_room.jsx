@@ -28,6 +28,7 @@ class CreateRoom extends React.Component {
       };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderNumbers = this.renderNumbers.bind(this);
+    this.updatePicUrl = this.updatePicUrl.bind(this);
   }
 
   handleSubmit(e) {
@@ -37,7 +38,9 @@ class CreateRoom extends React.Component {
       {}, {room: this.state.room},
       {room: {host_id: this.props.currentUser.id }}
     );
-    this.props.createRoom(room);
+    this.props.createRoom(room).then(
+      () => this.props.history.push('/')
+    );
   }
 
   update(field) {
@@ -80,6 +83,13 @@ class CreateRoom extends React.Component {
         );
       }
     return count;
+  }
+
+  updatePicUrl(url) {
+    console.log(this);
+    this.setState({
+      room: Object.assign(this.state.room, { pic_url: url})
+    });
   }
 
   render() {
@@ -179,8 +189,7 @@ class CreateRoom extends React.Component {
                 {this.renderNumbers('beds','beds')}
               </select>
 
-            <DropForm currentState={this.state}
-              />
+            <DropForm updateUrl={this.updatePicUrl}/>
 
             <button onClick={this.handleSubmit} >create</button>
             </div>
@@ -192,10 +201,3 @@ class CreateRoom extends React.Component {
 }
 
 export default CreateRoom;
-
-// <input
-//   type="text"
-//   value={this.state.room.pic_url}
-//   onChange={this.update('pic_url')}
-//   placeholder="Pic Url"
-// />

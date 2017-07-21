@@ -5,11 +5,9 @@ const CLOUDINARY_UPLOAD_PRESET = 'ox1h6aai';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dluh2fsyd/upload';
 
 
-export default class DropForm extends React.Component {
-
+class DropForm extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Props", this.props.currentState);
     this.state = {
       uploadedFileCloudinaryUrl: ''
     };
@@ -19,11 +17,7 @@ export default class DropForm extends React.Component {
     this.setState({
       uploadedFile: files[0]
     });
-    // console.log("state", CreateRoom.state);
     this.handleImageUpload(files[0]);
-  }
-  componentWillReceiveProps() {
-    console.log("Props RECEIVE", this.props.currentState);
   }
 
   handleImageUpload(file) {
@@ -37,35 +31,45 @@ export default class DropForm extends React.Component {
       }
 
       if (response.body.secure_url !== '') {
+        this.props.updateUrl(response.body.secure_url);
         this.setState({
           uploadedFileCloudinaryUrl: response.body.secure_url
         });
       }
     });
   }
-    render() {
-      console.log("STATE", this.state);
-      return(
-        <div>
-          <div className="FileUpload">
-            <Dropzone
-              multiple={false}
-              accept="image/*"
-              onDrop={this.onImageDrop.bind(this)}>
-              <p>Drop an image or click to select a file to upload.</p>
-            </Dropzone>
-          </div>
 
-          <div>
-            {this.state.uploadedFileCloudinaryUrl === '' ? null :
-            <div >
-              <p>{this.state.uploadedFile.name}</p>
-
-              <img src={this.state.uploadedFileCloudinaryUrl} />
-            </div>}
-          </div>
-        </div>
-      );
+  fileUpload(){
+    return(
+      <div className="FileUpload">
+        <Dropzone
+          multiple={false}
+          accept="image/*"
+          onDrop={this.onImageDrop.bind(this)}>
+          <p>Drop an image or click to select a file to upload.</p>
+        </Dropzone>
+      </div>
+    );
   }
 
+  displayFile() {
+    return(
+      <div>
+        {this.state.uploadedFileCloudinaryUrl === '' ? null :
+        <div >
+          <img src={this.state.uploadedFileCloudinaryUrl} />
+        </div>}
+      </div>
+    );
+  }
+
+  render() {
+    const displayType = this.state.uploadedFileCloudinaryUrl ?  this.displayFile() : this.fileUpload();
+    return(
+      <div>
+        {displayType}
+      </div>
+    );
+  }
 }
+export default DropForm;
