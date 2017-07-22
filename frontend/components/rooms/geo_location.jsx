@@ -4,15 +4,16 @@ import { withRouter } from 'react-router-dom';
 class GeoLocation extends React.Component {
   constructor(props){
     super(props);
-    console.log(this.props);
+
   }
 
   componentDidMount() {
     // set the map to show SF
      const map = this.refs.map;
+    //  this.coords = this.getCurrentLocation();
      const mapOptions = {
-       center: { lat: 37.7758, lng: -122.435 }, // this is SF
-       zoom: 13
+       center: {lat: 69.793000, lng: -108.241000}, // this is area 51
+       zoom: 11
      };
      this.map = new google.maps.Map(map, mapOptions);
      let input = document.getElementById('searchTextField');
@@ -22,6 +23,12 @@ class GeoLocation extends React.Component {
     // this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     this.registerListeners(searchBox, map);
 
+  }
+
+  getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition((position)=>{
+      return {lat: position.coords.latitude, lng: position.coords.longitude};
+    });
   }
 
   componenetDidUpdate(){
@@ -39,12 +46,26 @@ class GeoLocation extends React.Component {
       // var latLon = google.maps.LatLngBounds();
       var place = searchBox.getPlaces()[0];
       console.log(place);
-      console.log(place.geometry.viewport["b"]["b"]); //longitude
-      console.log(place.geometry.viewport["f"]["b"]); //lattitude
+      const long = place.geometry.viewport["b"]["b"];
+      const latt = place.geometry.viewport["f"]["b"];
+      var pos = {lat: latt, lng: long};
       self.props.updateGeoLocation({
         lat: place.geometry.viewport["f"]["b"],
         lng: place.geometry.viewport["b"]["b"],
         address: place.formatted_address});
+
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: self.map,
+        });
+        self.map.setCenter(pos, 10);
+
+        // self.map.addOverlay(new google.maps.Marker(
+        //   new google.maps.LatLng(latt, long)));
+        //   var point = new google.maps.LatLng(latt, long);
+        //   map.setCenter(point, 10);
+        //   var marker = new google.maps.Marker(point);
+        //   map.addOverlay(marker);
       // console.log(latLon);
       // var icon = {
       //   url: place.icon,

@@ -12,19 +12,19 @@ class CreateRoom extends React.Component {
     super(props);
       this.state = {
         room: {
-          title: "test",
-          description: "test",
-          address: "test",
-          lng: "test",
-          lat: "test",
-          host_id: "test",
-          price: "test",
-          prop_type: "test",
+          title: "",
+          description: "",
+          address: "",
+          lng: null,
+          lat: null,
+          host_id: "",
+          price: "",
+          prop_type: "",
           room_type: 'Entire place',
           num_guests: 1,
           bedrooms: 1,
           beds: 1,
-          pic_url: "test"
+          pic_url: ""
         }
       };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -98,7 +98,7 @@ class CreateRoom extends React.Component {
     this.setState({
       room: Object.assign(this.state.room, { lat: lat, lng: lng, address: address})
     });
-    console.log(this.state.room);
+    console.log("update", this.state.room);
   }
 
   render() {
