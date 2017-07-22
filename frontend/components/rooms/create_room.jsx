@@ -2,6 +2,7 @@ import React from 'react';
 import merge from 'lodash/merge';
 import { Redirect, Route,Link, withRouter } from 'react-router-dom';
 import Select from 'react-select';
+import GeoLocation from './geo_location';
 // import VirtualizedSelect from 'react-virtualized-select';
 
 import DropForm from './image_drop';
@@ -11,24 +12,25 @@ class CreateRoom extends React.Component {
     super(props);
       this.state = {
         room: {
-          title: "",
-          description: "",
-          address: "",
-          lng: "",
-          lat: "",
-          host_id: "",
-          price: "",
-          prop_type: "",
+          title: "test",
+          description: "test",
+          address: "test",
+          lng: "test",
+          lat: "test",
+          host_id: "test",
+          price: "test",
+          prop_type: "test",
           room_type: 'Entire place',
           num_guests: 1,
           bedrooms: 1,
           beds: 1,
-          pic_url: ""
+          pic_url: "test"
         }
       };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderNumbers = this.renderNumbers.bind(this);
     this.updatePicUrl = this.updatePicUrl.bind(this);
+    this.updateGeoLocation = this.updateGeoLocation.bind(this);
   }
 
   handleSubmit(e) {
@@ -38,10 +40,10 @@ class CreateRoom extends React.Component {
       {}, {room: this.state.room},
       {room: {host_id: this.props.currentUser.id }}
     );
-    this.props.createRoom(room).then(
-      () => this.props.history.push('/')
-    );
+    this.props.createRoom(room).then(this.props.history.push('/'));
+
   }
+
 
   update(field) {
     return e => {
@@ -86,10 +88,17 @@ class CreateRoom extends React.Component {
   }
 
   updatePicUrl(url) {
-    console.log(this);
     this.setState({
       room: Object.assign(this.state.room, { pic_url: url})
     });
+  }
+
+  updateGeoLocation({lat, lng, address}) {
+    console.log(lat, lng);
+    this.setState({
+      room: Object.assign(this.state.room, { lat: lat, lng: lng, address: address})
+    });
+    console.log(this.state.room);
   }
 
   render() {
@@ -97,43 +106,8 @@ class CreateRoom extends React.Component {
       <div className="new-room-form-container">
         <div className="new-room-form-box">
           <div className="new-room-form">
-                <input autoFocus
-                  type="text"
-                  value={this.state.room.title}
-                  onChange={this.update('title')}
-                  placeholder="Title"
-                />
-                <input
-                  type="text"
-                  value={this.state.room.description}
-                  onChange={this.update('description')}
-                  placeholder="Description"
-                />
-                <input
-                  type="text"
-                  value={this.state.room.address}
-                  onChange={this.update('address')}
-                  placeholder="Address"
-                />
-                <input
-                  type="text"
-                  value={this.state.room.lng}
-                  onChange={this.update('lng')}
-                  placeholder="Longitude"
-                />
-                <input
-                  type="text"
-                  value={this.state.room.lat}
-                  onChange={this.update('lat')}
-                  placeholder="Latitude"
-                />
-                <input
-                  type="text"
-                  value={this.state.room.price}
-                  onChange={this.update('price')}
-                  placeholder="Price"
-                />
-
+            <div id="form-title">What kind of place are you listing?</div>
+            <div id="sub-form-title">What type of property is this?</div>
               <select onChange={this.updateList('prop_type')}>
                 <option value="" hidden >Select one</option>
                 <option value="Apartment">Apartment</option>
@@ -167,37 +141,108 @@ class CreateRoom extends React.Component {
                 <option value="Yurt">Yurt</option>
               </select>
 
+              <div className="padder"></div>
+
+              <div id="sub-form-title">What will guests have?</div>
               <select onChange={this.updateList('room_type')} >
                 <option value='Entire place'>Entire place</option>
                 <option value='Private room'>Private room</option>
                 <option value='Shared room'>Shared room</option>
               </select>
 
+              <div className="padder"></div>
+
+              <div id="form-title">How many guests can your place accommodate?</div>
               <select onChange={this.updateList('num_guests')}>
                 <option value={1} >1 guest</option>
                 {this.renderNumbers('num_guests','guests')}
               </select>
 
+              <div className="padder"></div>
+
+              <div id="sub-form-title">How many bedrooms can guests use?</div>
               <select onChange={this.updateList('bedrooms')} defaultValue={1}>
                 <option value={0} >Studio</option>
                 <option value={1}>1 bedroom</option>
                 {this.renderNumbers('bedrooms','bedrooms')}
               </select>
 
+              <div className="padder"></div>
+
+              <div id="sub-form-title">How many beds can guests use?</div>
               <select onChange={this.updateList('beds')}>
                 <option value={1}>1 bed</option>
                 {this.renderNumbers('beds','beds')}
               </select>
 
-            <DropForm updateUrl={this.updatePicUrl}/>
+              <div className="padder"></div>
 
-            <button onClick={this.handleSubmit} >create</button>
-            </div>
+              <div id="sub-form-title">Where’s your place located?</div>
+                <input
+                  id="searchTextField"
+                  type="text"
+                  placeholder="Address"
+                />
+              <div id="form-title">Show travelers what your space looks like</div>
+
+              <DropForm className="drop-form" updateUrl={this.updatePicUrl}/>
+
+              <div className="padder"></div>
+
+              <div id="form-title">Edit your description</div>
+              <div id="sub-form-title">Summary</div>
+                <textarea
+                    value={this.state.room.description}
+                    onChange={this.update('description')}
+                    placeholder="Description"
+                  />
+                <div className="padder"></div>
+
+                <div id="form-title">Name your place</div>
+                <input
+                  type="text"
+                  value={this.state.room.title}
+                  onChange={this.update('title')}
+                  placeholder="Title"
+                />
+              <div className="padder"></div>
+
+              <div id="form-title">Set your daily rate</div>
+                <input
+                  type="text"
+                  value={this.state.room.price}
+                  onChange={this.update('price')}
+                  placeholder="Daily rate"
+                />
+              <div className="padder"></div>
+
+
             {this.renderErrors()}
+            </div>
+            <div className="map-container">
+              <GeoLocation updateGeoLocation={this.updateGeoLocation}/>
+            </div>
+
           </div>
+          <button onClick={this.handleSubmit} >create</button>
       </div>
     );
   }
 }
 
-export default CreateRoom;
+export default withRouter(CreateRoom);
+//
+// <div className="padder"></div>
+//   <input
+//     type="text"
+//     value={this.state.room.lng}
+//     onChange={this.update('lng')}
+//     placeholder="Longitude"
+//   />
+// <div className="padder"></div>
+//   <input
+//     type="text"
+//     value={this.state.room.lat}
+//     onChange={this.update('lat')}
+//     placeholder="Latitude"
+//   />
