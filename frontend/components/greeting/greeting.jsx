@@ -80,6 +80,9 @@ class Greeting extends React.Component {
               <li>
                 <Link to='/create'>Create Room</Link>
               </li>
+              <li>
+                <Link to={`/listings/${currentUser.id}`}>Show Listings</Link>
+              </li>
             </ul>
 
 

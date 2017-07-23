@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: %i(new create)
     resource :session, only: %i(new create destroy)
     resources :rooms
+    resources :listings, only: :show
     resources :pictures, only: %i(new index create destroy)
-    resources :listings, only: %i(new index create destroy)
   end
 end

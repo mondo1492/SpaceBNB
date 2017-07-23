@@ -33,8 +33,8 @@ export const editRoom = room => dispatch => {
   );
 };
 
-export const showRoom = () => dispatch => {
-  return APIRoomUtil.showRoom().then(
+export const showRoom = room => dispatch => {
+  return APIRoomUtil.showRoom(room).then(
     response => dispatch(receiveRoom(response)),
     errors => dispatch(receiveRoomsErrors(errors.responseJSON))
   );
@@ -49,9 +49,9 @@ export const showAllRooms = () => dispatch => {
 };
 
 //write a delete room action or remove room action
-// export const deleteRoom = () => dispatch => {
-//   return APIRoomUtil.deleteRoom().then(
-//     () => dispatch(receiveRoom()),
-//     errors => dispatch(receiveRoomsErrors(errors.responseJSON))
-//   );
-// };
+export const deleteRoom = () => dispatch => {
+  return APIRoomUtil.deleteRoom().then(
+    () => dispatch(receiveRoom()),
+    errors => dispatch(receiveRoomsErrors(errors.responseJSON))
+  );
+};
