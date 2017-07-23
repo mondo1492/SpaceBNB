@@ -49,14 +49,18 @@ class GeoLocation extends React.Component {
       const long = place.geometry.viewport["b"]["b"];
       const latt = place.geometry.viewport["f"]["b"];
       var pos = {lat: latt, lng: long};
+      const mapOptions = {
+        center: pos, // this is area 51
+        zoom: 11
+      };
+      const mapRerender = new google.maps.Map(map, mapOptions);
       self.props.updateGeoLocation({
         lat: place.geometry.viewport["f"]["b"],
         lng: place.geometry.viewport["b"]["b"],
         address: place.formatted_address});
-
         var marker = new google.maps.Marker({
           position: pos,
-          map: self.map,
+          map: mapRerender,
         });
         self.map.setCenter(pos, 10);
 

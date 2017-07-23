@@ -16,7 +16,7 @@ const App = () => (
       <LeftLowerNav/>
     </header>
     <Switch>
-      <Route exact path="/" component={ MainDisplayContainer } />
+      <Route path="/" component={ MainDisplayContainer } />
       <ProtectedRoute path="/create" component={ CreateRoomContainer }/>
 
     </Switch>

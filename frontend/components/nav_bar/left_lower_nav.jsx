@@ -6,9 +6,6 @@ const LeftLowerNav = () => {
       <button autoFocus>HOMES</button>
       <button>EXPERIENCES</button>
       <button>PLACES</button>
-      <button>
-        <Link to='/create'>Create Room</Link>
-      </button>
     </nav>
   );
 };

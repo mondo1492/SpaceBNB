@@ -72,10 +72,19 @@ class Greeting extends React.Component {
         <button className="header-button" onClick={resetErrors, logout}>
           <h4>Log Out</h4>
         </button>
-        <button>
-          <img src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500516308/users_oq566g.svg" height="30" width="30"></img>
+        <div className="dropdown">
+            <button className="dropbtn">
+              <img src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500516308/users_oq566g.svg" height="30" width="30"></img>
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <Link to='/create'>Create Room</Link>
+              </li>
+            </ul>
 
-        </button>
+
+        </div>
+
       </nav>
     );
   }

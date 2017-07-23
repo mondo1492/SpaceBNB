@@ -3,6 +3,10 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_many :rooms,
+    primary_key: :id,
+    foreign_key: :host_id
+
   attr_reader :password
 
   after_initialize :ensure_token

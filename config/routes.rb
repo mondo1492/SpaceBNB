@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resource :session, only: %i(new create destroy)
     resources :rooms
     resources :pictures, only: %i(new index create destroy)
+    resources :listings, only: %i(new index create destroy)
   end
 end
