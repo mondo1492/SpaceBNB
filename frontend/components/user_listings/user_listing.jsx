@@ -17,8 +17,8 @@ class UserListings extends React.Component {
     e.preventDefault();
     this.props.deleteRoom(e.currentTarget.value).then(
       () => this.setState(
-        {listing: this.props.getUserListings(this.props.currentUser.id)})
-    );
+        { listing: this.props.getUserListings(this.props.currentUser.id) }
+    ));
   }
 
   allRoomListed() {

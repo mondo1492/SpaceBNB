@@ -44,7 +44,7 @@ sufficient CSS styling:
 ### Phase 2: Rooms Model, API, and components
 ##### Week 1 (Th, F): 2 days
 
-**Objective:** Rooms can be created, read, edited and destroyed through
+**Objective:** Rooms can be created, read and destroyed through
 the API.
 
 ### Phase 3: Maps
@@ -64,6 +64,7 @@ the API.
 
 
 ### Bonus Features (TBD)
+- [ ] Edit User Listing
 - [ ] Filtering
 - [ ] Messaging
 - [ ] User/host profiles
