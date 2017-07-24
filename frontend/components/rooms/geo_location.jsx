@@ -12,8 +12,9 @@ class GeoLocation extends React.Component {
      const map = this.refs.map;
     //  this.coords = this.getCurrentLocation();
      const mapOptions = {
-       center: {lat: 69.793000, lng: -108.241000}, // this is area 51
-       zoom: 11
+       center: {lat: 37.773972,
+       lng: -122.431297},
+       zoom: 13
      };
      this.map = new google.maps.Map(map, mapOptions);
      let input = document.getElementById('searchTextField');

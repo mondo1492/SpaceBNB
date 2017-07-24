@@ -69,9 +69,7 @@ class Greeting extends React.Component {
         <button className="link" onClick={this.handleClick}>
           <h4>Help</h4>
         </button>
-        <button className="header-button" onClick={resetErrors, logout}>
-          <h4>Log Out</h4>
-        </button>
+
         <div className="dropdown">
           <button className="dropbtn" data-toggle="dropdown-toggle">
             <img src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500516308/users_oq566g.svg" height="30" width="30"></img>
@@ -79,10 +77,18 @@ class Greeting extends React.Component {
           <div className="dropdown-content">
             <ul className="dropdown-menu">
               <li>
-                <Link to='/create'>Create Room</Link>
+                <Link to='/create'>Add a new listing</Link>
               </li>
-              <li id="last-item">
-                <Link to={`/listings/${currentUser.id}`}>Show Listings</Link>
+              <li >
+                <Link to={`/listings/${currentUser.id}`}>View all listings</Link>
+              </li>
+              <li>
+                <Link
+                  to={"/"}
+                  id="last-item"
+                  className="header-button"
+                  onClick={resetErrors, logout}>Log Out
+                </Link>
               </li>
             </ul>
 
