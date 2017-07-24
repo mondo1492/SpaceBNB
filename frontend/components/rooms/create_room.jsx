@@ -106,8 +106,8 @@ class CreateRoom extends React.Component {
       <div className="new-room-form-container">
         <div className="new-room-form-box">
           <div className="new-room-form">
-            <div id="form-title">What kind of place are you listing?</div>
-            <div id="sub-form-title">What type of property is this?</div>
+            <h2 id="form-title">What kind of place are you listing?</h2>
+            <h3 id="sub-form-title">What type of property is this?</h3>
               <select onChange={this.updateList('prop_type')}>
                 <option value="" hidden >Select one</option>
                 <option value="Apartment">Apartment</option>
@@ -143,7 +143,7 @@ class CreateRoom extends React.Component {
 
               <div className="padder"></div>
 
-              <div id="sub-form-title">What will guests have?</div>
+              <h3 id="sub-form-title">What will guests have?</h3>
               <select onChange={this.updateList('room_type')} >
                 <option value='Entire place'>Entire place</option>
                 <option value='Private room'>Private room</option>
@@ -152,7 +152,7 @@ class CreateRoom extends React.Component {
 
               <div className="padder"></div>
 
-              <div id="form-title">How many guests can your place accommodate?</div>
+              <h2 id="form-title">How many guests can your place accommodate?</h2>
               <select onChange={this.updateList('num_guests')}>
                 <option value={1} >1 guest</option>
                 {this.renderNumbers('num_guests','guests')}
@@ -160,7 +160,7 @@ class CreateRoom extends React.Component {
 
               <div className="padder"></div>
 
-              <div id="sub-form-title">How many bedrooms can guests use?</div>
+              <h3 id="sub-form-title">How many bedrooms can guests use?</h3>
               <select onChange={this.updateList('bedrooms')} defaultValue={1}>
                 <option value={0} >Studio</option>
                 <option value={1}>1 bedroom</option>
@@ -169,7 +169,7 @@ class CreateRoom extends React.Component {
 
               <div className="padder"></div>
 
-              <div id="sub-form-title">How many beds can guests use?</div>
+              <h3 id="sub-form-title">How many beds can guests use?</h3>
               <select onChange={this.updateList('beds')}>
                 <option value={1}>1 bed</option>
                 {this.renderNumbers('beds','beds')}
@@ -177,28 +177,28 @@ class CreateRoom extends React.Component {
 
               <div className="padder"></div>
 
-              <div id="sub-form-title">Where’s your place located?</div>
+              <h3 id="sub-form-title">Where’s your place located?</h3>
                 <input
                   id="searchTextField"
                   type="text"
                   placeholder="Address"
                 />
-              <div id="form-title">Show travelers what your space looks like</div>
+              <h2 id="form-title">Show travelers what your space looks like</h2>
 
               <DropForm className="drop-form" updateUrl={this.updatePicUrl}/>
 
               <div className="padder"></div>
 
-              <div id="form-title">Edit your description</div>
-              <div id="sub-form-title">Summary</div>
+              <h2 id="form-title">Edit your description</h2>
+              <h3 id="sub-form-title">Summary</h3>
                 <textarea
                     value={this.state.room.description}
                     onChange={this.update('description')}
-                    placeholder="Description"
+                    placeholder="Description..."
                   />
                 <div className="padder"></div>
 
-                <div id="form-title">Name your place</div>
+                <h2 id="form-title">Name your place</h2>
                 <input
                   type="text"
                   value={this.state.room.title}
@@ -207,16 +207,20 @@ class CreateRoom extends React.Component {
                 />
               <div className="padder"></div>
 
-              <div id="form-title">Set your daily rate</div>
+              <h2 id="form-title">Set your daily rate</h2>
                 <input
                   type="text"
                   value={this.state.room.price}
                   onChange={this.update('price')}
                   placeholder="Daily rate"
-                />
-              <div className="padder"></div>
+                >
 
+              </input>
+              <div className="padder">
 
+              </div>
+
+            <button onClick={this.handleSubmit}>Finish</button>
             {this.renderErrors()}
             </div>
             <div className="map-container">
@@ -224,7 +228,7 @@ class CreateRoom extends React.Component {
             </div>
 
           </div>
-          <button onClick={this.handleSubmit} >create</button>
+
       </div>
     );
   }

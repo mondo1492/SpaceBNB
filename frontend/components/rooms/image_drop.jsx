@@ -43,6 +43,7 @@ class DropForm extends React.Component {
     return(
       <div className="FileUpload">
         <Dropzone
+          className="dropzone"
           multiple={false}
           accept="image/*"
           onDrop={this.onImageDrop.bind(this)}>

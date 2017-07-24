@@ -14,28 +14,71 @@
   width: 50%;
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 75%;
   padding-top: 50px;
   padding-left: 75px;
   padding-right: 75px;
-  input, textarea,  {
+  input {
     // height: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    display: block;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 16px;
+    vertical-align: middle;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+  }
+  textarea {
+    padding-top: 8px;
+    padding-left: 15px;
+    height: 50px;
+    font-size: 14px;
   }
   .padder{
-    height: 20px;
+    height: 10px;
+
+  }
+  h2 {
+    // height: 10px;
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  h3 {
+    // height: 2px;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: lighter;
+    color: grey;
   }
   select {
     // -webkit-appearance: none;
     // -moz-appearance: none;
     height: 30px;
+    font-size: 16px;
     appearance: none;
     padding: 10px;
     option {
       align-items: center;
     }
      border-radius: 4px;
+  }
+  button {
+    margin-top: 20px;
+    cursor: pointer;
+    background: $orange;
+    color: white;
+    border: none;
+
+    border-radius: 5px;
+    height: 50px;
+    font-size: 30px;
+  }
+  button:hover {
+    background: orange;
   }
 }
 html, body {
@@ -46,6 +89,7 @@ html, body {
 }
 .map-container {
   // border: 3px solid green;
+  padding: 10px;
   width: 100%;
   height: 100%;
 
@@ -55,10 +99,28 @@ html, body {
   // border: 3px solid red;
   // display:inline-block;
   width: 100%;
-  height: 600px;
+  height: 1025px;
 
 }
 
-.form-title {
-  font-size: 20px;
+
+.FileUpload {
+  display: inline-block;
+  width: 100%;
+  justify-content: center;
+
+  .dropzone {
+    width : 100%;
+    height : 100px;
+    border: 1px dashed grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+  }
+
 }
