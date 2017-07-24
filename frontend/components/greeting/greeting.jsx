@@ -30,7 +30,6 @@ class Greeting extends React.Component {
     if (this.props.errors.length >= 1) {
       this.props.resetErrors();
     }
-    // this.props.resetErrors(); ???? ASK TA ABOUT THIS AGAIN TOMORROW!!
   }
 
   componentWillReceiveProps(nextProps) {
@@ -80,14 +79,14 @@ class Greeting extends React.Component {
                 <Link to='/create'>Add a new listing</Link>
               </li>
               <li >
-                <Link to={`/listings/${currentUser.id}`}>View all listings</Link>
+                <Link to={`/listings/${currentUser.id}`}>View your listings</Link>
               </li>
               <li>
                 <Link
                   to={"/"}
                   id="last-item"
                   className="header-button"
-                  onClick={resetErrors, logout}>Log Out
+                  onClick={resetErrors, logout}>Log out
                 </Link>
               </li>
             </ul>
