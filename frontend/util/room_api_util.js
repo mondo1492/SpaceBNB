@@ -13,10 +13,10 @@ export const showAllRooms = () => (
   })
 );
 
-export const deleteRoom = room => (
+export const deleteRoom = id => (
   $.ajax({
     method: 'DELETE',
-    url: `api/rooms/${room.id}`
+    url: `api/rooms/${id}`
   })
 );
 

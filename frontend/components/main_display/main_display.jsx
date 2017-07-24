@@ -7,11 +7,9 @@ class MainDisplay extends React.Component {
   }
 
   allRooms() {
-    console.log(this.props.entities);
     return(
       <ul>
         {this.props.entities.map((room, i) => (
-
           <li key={`room-${i}`}>
             <h4>Room Title is {room.title} </h4>
           </li>

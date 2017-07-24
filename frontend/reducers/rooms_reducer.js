@@ -14,11 +14,9 @@ const defaultState = Object.freeze({
 const roomReducer = (state = defaultState, action) => {
   Object.freeze(state);
   let nextState;
-  console.log(action);
   switch(action.type) {
     case RECEIVE_ROOM:
       nextState = Object.assign({}, state);
-
       nextState.entities[action.room.id] = action.room;
       return nextState;
     case RECEIVE_ROOMS:

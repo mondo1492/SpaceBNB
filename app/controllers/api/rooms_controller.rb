@@ -20,6 +20,16 @@ class Api::RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @room = Room.find(params[:id])
+
+    if @room.destroy
+      render :show
+    else
+      render json: @room.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def room_params

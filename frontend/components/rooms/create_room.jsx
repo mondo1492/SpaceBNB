@@ -12,19 +12,19 @@ class CreateRoom extends React.Component {
     super(props);
       this.state = {
         room: {
-          title: "",
-          description: "",
-          address: "",
-          lng: null,
-          lat: null,
-          host_id: "",
-          price: "",
-          prop_type: "",
+          title: "test",
+          description: "test",
+          address: "test",
+          lng: "test",
+          lat: "test",
+          host_id: "test",
+          price: "test",
+          prop_type: "test",
           room_type: 'Entire place',
           num_guests: 1,
           bedrooms: 1,
           beds: 1,
-          pic_url: ""
+          pic_url: "test"
         }
       };
     this.handleSubmit = this.handleSubmit.bind(this);

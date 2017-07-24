@@ -8,6 +8,7 @@ import MainDisplayContainer from './main_display/main_display_container';
 import CreateRoomContainer from './rooms/room_container';
 import GeoLocation from './rooms/geo_location';
 import GoogleMap from './google_map/map';
+import ListingsContainer from './user_listings/user_listings_container';
 
 const App = () => (
   <div>
@@ -16,11 +17,17 @@ const App = () => (
       <LeftLowerNav/>
     </header>
     <Switch>
-      <Route path="/" component={ MainDisplayContainer } />
-      <ProtectedRoute path="/create" component={ CreateRoomContainer }/>
-
+      <Route exact path="/" component={ MainDisplayContainer } />
+      <ProtectedRoute exact path="/create" component={ CreateRoomContainer }/>
+      <ProtectedRoute path="/listings/:id" component={ ListingsContainer }/>
     </Switch>
+
+
   </div>
 );
 
 export default App;
+//
+// <Switch>
+// </Switch>
+//       //
