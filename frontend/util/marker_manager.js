@@ -7,35 +7,36 @@ class MarkerManager {
     this.markers = {};
   }
 
-  updateMarkers(benches){
+  updateMarkers(rooms){
     const benchesObj = {};
-    benches.forEach(bench => benchesObj[bench.id] = bench);
-
-    benches
-      .filter(bench => !this.markers[bench.id])
-      .forEach(newBench => this.createMarkerFromBench(newBench, this.handleClick))
-
-    Object.keys(this.markers)
-      .filter(benchId => !benchesObj[benchId])
-      .forEach((benchId) => this.removeMarker(this.markers[benchId]))
+    console.log('Time to Render some freaking rooms');
+    // benches.forEach(bench => benchesObj[bench.id] = bench);
+    //
+    // benches
+    //   .filter(bench => !this.markers[bench.id])
+    //   .forEach(newBench => this.createMarkerFromBench(newBench, this.handleClick))
+    //
+    // Object.keys(this.markers)
+    //   .filter(benchId => !benchesObj[benchId])
+    //   .forEach((benchId) => this.removeMarker(this.markers[benchId]))
   }
 
-  createMarkerFromBench(bench) {
-    const position = new google.maps.LatLng(bench.lat, bench.lng);
-    const marker = new google.maps.Marker({
-      position,
-      map: this.map,
-      benchId: bench.id
-    });
-
-    marker.addListener('click', () => this.handleClick(bench));
-    this.markers[marker.benchId] = marker;
-  }
-
-  removeMarker(marker) {
-    this.markers[marker.benchId].setMap(null);
-    delete this.markers[marker.benchId];
-  }
+  // createMarkerFromBench(bench) {
+  //   const position = new google.maps.LatLng(bench.lat, bench.lng);
+  //   const marker = new google.maps.Marker({
+  //     position,
+  //     map: this.map,
+  //     benchId: bench.id
+  //   });
+  //
+  //   marker.addListener('click', () => this.handleClick(bench));
+  //   this.markers[marker.benchId] = marker;
+  // }
+  //
+  // removeMarker(marker) {
+  //   this.markers[marker.benchId].setMap(null);
+  //   delete this.markers[marker.benchId];
+  // }
 }
 
 export default MarkerManager;

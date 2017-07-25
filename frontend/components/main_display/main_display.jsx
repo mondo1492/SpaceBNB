@@ -15,14 +15,14 @@ class MainDisplay extends React.Component {
       <ul>
         {rooms.map((room, i) => (
           <li key={`room-${i}`}>
-            <h4>{ room ? room.title : "" } </h4>
+
             <Link to={ room ? `/rooms/${room.id}` : "" }>
               <img src={ room ? `${room.pic_url}` : ""}
                 height="400"
                 width="400">
               </img>
             </Link>
-
+            <h4>{ room ? room.title : "" } </h4>
           </li>
         ))}
       </ul>
@@ -34,7 +34,10 @@ class MainDisplay extends React.Component {
     return(
       <div>
         <h2>Top Rated Rooms</h2>
-        {displayAllRooms}
+        <div className="display-all-rooms">
+          {displayAllRooms}
+        </div>
+
       </div>
     );
   }

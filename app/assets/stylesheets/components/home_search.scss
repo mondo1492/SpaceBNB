@@ -1,0 +1,39 @@
+.searchMap {
+  position: fixed;
+  width: 500px;
+  height: 100vh;
+}
+
+.display-all-rooms {
+  //resize images on resizing
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    li {
+
+      min-height: 50%;
+      max-height: 50%;
+      padding: 8px;
+      img {
+        height: 300px;
+        width: 300px;
+        max-height: 100%;
+        max-width: 100%;
+
+        // height: 350px;
+        // width: 350px;
+        // // max-width: 100%;
+        // min-height: 100px;
+        // min-width: 100px;
+      }
+    }
+  }
+}
+
+.rooms-map-main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
