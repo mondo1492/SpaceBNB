@@ -7,13 +7,22 @@ class MainDisplay extends React.Component {
   }
 
   allRooms() {
-    console.log(this.props);
+    const rooms = this.props.entities ? this.props.entities : [];
+    // if (rooms.length === 0) {
+    //   return;
+    // }
     return(
       <ul>
-        {this.props.entities.map((room, i) => (
+        {rooms.map((room, i) => (
           <li key={`room-${i}`}>
-            <h4>{room.title} </h4>
-            <img src={`${room.pic_url}`} height="400" width="400"></img>
+            <h4>{ room ? room.title : "" } </h4>
+            <Link to={ room ? `/rooms/${room.id}` : "" }>
+              <img src={ room ? `${room.pic_url}` : ""}
+                height="400"
+                width="400">
+              </img>
+            </Link>
+
           </li>
         ))}
       </ul>

@@ -9,6 +9,7 @@ import CreateRoomContainer from './rooms/room_container';
 import GeoLocation from './rooms/geo_location';
 import GoogleMap from './google_map/map';
 import ListingsContainer from './user_listings/user_listings_container';
+import ShowRoomContainer from './show_individual_room/show_room_container';
 
 const App = () => (
   <div>
@@ -18,6 +19,7 @@ const App = () => (
     </header>
     <Switch>
       <Route exact path="/" component={ MainDisplayContainer } />
+      <Route exact path="/rooms/:id" component={ ShowRoomContainer } />
       <ProtectedRoute exact path="/create" component={ CreateRoomContainer }/>
       <ProtectedRoute path="/listings/:id" component={ ListingsContainer }/>
     </Switch>

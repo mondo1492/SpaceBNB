@@ -14,7 +14,7 @@ class GeoLocation extends React.Component {
      const mapOptions = {
        center: {lat: 37.773972,
        lng: -122.431297},
-       zoom: 13
+       zoom: 12
      };
      this.map = new google.maps.Map(map, mapOptions);
      let input = document.getElementById('searchTextField');
@@ -52,7 +52,7 @@ class GeoLocation extends React.Component {
       var pos = {lat: latt, lng: long};
       const mapOptions = {
         center: pos, // this is area 51
-        zoom: 11
+        zoom: 14
       };
       const mapRerender = new google.maps.Map(map, mapOptions);
       self.props.updateGeoLocation({
@@ -63,7 +63,7 @@ class GeoLocation extends React.Component {
           position: pos,
           map: mapRerender,
         });
-        self.map.setCenter(pos, 10);
+        self.map.setCenter(pos, 14);
 
         // self.map.addOverlay(new google.maps.Marker(
         //   new google.maps.LatLng(latt, long)));

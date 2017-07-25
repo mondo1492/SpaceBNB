@@ -27,9 +27,9 @@ export const editRoom = room => (
   })
 );
 
-export const showRoom = room => (
+export const showRoom = id => (
   $.ajax({
     method: 'GET',
-    url: `api/rooms/${room.id}`
+    url: `api/rooms/${id}`
   })
 );
