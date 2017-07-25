@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MarkerManager from '../../util/marker_manager';
 import { withRouter } from 'react-router-dom';
 
 class GoogleMap extends React.Component {
@@ -10,12 +11,17 @@ class GoogleMap extends React.Component {
      lng: -73.935242},
      zoom: 12
     };
-    // this.map = new google.maps.Map(map, mapOptions);
+
     this.searchMap = new google.maps.Map(searchMap, mapOptions);
+    this.MarkerManager = new MarkerManager(this.searchMap);
+    this.MarkerManager.updateMarkers(this.props.rooms);
 
     let input = document.getElementById('searchTextFieldHome');
-    // let searchBox = new google.maps.places.SearchBox(input);
-    // this.registerListeners(searchBox, searchMap);
+    //have this link to top search bar (search rooms by location)
+  }
+  //
+  componentWillUpdate() {
+    this.MarkerManager.updateMarkers(this.props.rooms);
   }
 
   getCurrentLocation() {
@@ -58,6 +64,3 @@ class GoogleMap extends React.Component {
   }
 }
 export default withRouter(GoogleMap);
-        // <div className="map" ref={ map => this.mapNode = map }>
-
-// <div className="map" ref="map"> Map </div>

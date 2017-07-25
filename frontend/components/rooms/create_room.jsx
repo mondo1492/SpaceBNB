@@ -12,14 +12,14 @@ class CreateRoom extends React.Component {
     super(props);
       this.state = {
         room: {
-          title: "test",
-          description: "test",
-          address: "test",
-          lng: "test",
-          lat: "test",
-          host_id: "test",
-          price: "test",
-          prop_type: "test",
+          title: "",
+          description: "",
+          address: "",
+          lng: null,
+          lat: null,
+          host_id: null,
+          price: "",
+          prop_type: "",
           room_type: 'Entire place',
           num_guests: 1,
           bedrooms: 1,
@@ -34,14 +34,13 @@ class CreateRoom extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log("SUBMITTTT", this.state);
     e.preventDefault();
     const room = merge(
       {}, {room: this.state.room},
       {room: {host_id: this.props.currentUser.id }}
     );
-    this.props.createRoom(room).then(this.props.history.push('/'));
-
+    this.props.createRoom(room).then(
+      this.props.history.push(`/listings/${this.props.currentUser.id}`));
   }
 
 
@@ -94,14 +93,13 @@ class CreateRoom extends React.Component {
   }
 
   updateGeoLocation({lat, lng, address}) {
-    console.log(lat, lng);
     this.setState({
       room: Object.assign(this.state.room, { lat: lat, lng: lng, address: address})
     });
-    console.log("update", this.state.room);
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="new-room-form-container">
         <div className="new-room-form-box">
@@ -209,7 +207,7 @@ class CreateRoom extends React.Component {
 
               <h2 id="form-title">Set your daily rate</h2>
                 <input
-                  type="text"
+                  type="number"
                   value={this.state.room.price}
                   onChange={this.update('price')}
                   placeholder="Daily rate"

@@ -42,10 +42,6 @@ class Greeting extends React.Component {
     return (
       <nav>
           <button className="link" onClick={this.handleClick}>
-            <h4>Become a Host</h4>
-          </button>
-
-          <button className="link" onClick={this.handleClick}>
             <h4>Help</h4>
           </button>
 
@@ -62,9 +58,6 @@ class Greeting extends React.Component {
   currentSession(currentUser, logout, resetErrors) {
     return (
       <nav>
-        <button className="link" onClick={this.handleClick}>
-          <h4>Become a Host</h4>
-        </button>
         <button className="link" onClick={this.handleClick}>
           <h4>Help</h4>
         </button>

@@ -1,4 +1,4 @@
-//delete
+import React from 'react';
 
 class MarkerManager {
   constructor(map, handleClick){
@@ -8,35 +8,35 @@ class MarkerManager {
   }
 
   updateMarkers(rooms){
-    const benchesObj = {};
+    const roomsObj = {};
+    rooms = rooms || [];
+    console.log("ROOMS", rooms);
     console.log('Time to Render some freaking rooms');
-    // benches.forEach(bench => benchesObj[bench.id] = bench);
-    //
-    // benches
-    //   .filter(bench => !this.markers[bench.id])
-    //   .forEach(newBench => this.createMarkerFromBench(newBench, this.handleClick))
-    //
-    // Object.keys(this.markers)
-    //   .filter(benchId => !benchesObj[benchId])
-    //   .forEach((benchId) => this.removeMarker(this.markers[benchId]))
+    rooms.forEach( room => (roomsObj[room.id] = room));
+
+    rooms
+      .filter( room => !this.markers[room.id])
+      .forEach( room => this.createMarkerFromRoom(room));
+
+
+    Object.keys(this.markers)
+      .filter(roomId => !roomsObj[roomId])
+      .forEach((roomId) => this.removeMarker(this.markers[roomId]))
   }
 
-  // createMarkerFromBench(bench) {
-  //   const position = new google.maps.LatLng(bench.lat, bench.lng);
-  //   const marker = new google.maps.Marker({
-  //     position,
-  //     map: this.map,
-  //     benchId: bench.id
-  //   });
-  //
-  //   marker.addListener('click', () => this.handleClick(bench));
-  //   this.markers[marker.benchId] = marker;
-  // }
-  //
-  // removeMarker(marker) {
-  //   this.markers[marker.benchId].setMap(null);
-  //   delete this.markers[marker.benchId];
-  // }
+  createMarkerFromRoom(room) {
+    const position = new google.maps.LatLng(room.lat, room.lng);
+      const marker = new google.maps.Marker({
+        position,
+        map: this.map,
+        roomId: room.id
+      });
+  }
+
+  removeMarker(marker) {
+    this.markers[marker.roomId].setMap(null);
+    delete this.markers[marker.roomId];
+  }
 }
 
 export default MarkerManager;

@@ -8,9 +8,7 @@ class MainDisplay extends React.Component {
 
   allRooms() {
     const rooms = this.props.entities ? this.props.entities : [];
-    // if (rooms.length === 0) {
-    //   return;
-    // }
+
     return(
       <ul>
         {rooms.map((room, i) => (
