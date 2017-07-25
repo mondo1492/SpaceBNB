@@ -4,6 +4,13 @@ import MarkerManager from '../../util/marker_manager';
 import { withRouter } from 'react-router-dom';
 
 class GoogleMap extends React.Component {
+  // constructor() {
+  //   const defaultBounds = {
+  //     northEast: {lat: 40.83628306424027, lng: -73.84941131152345},
+  //     southWest: {lat: 40.624768849448365, lng: -74.02107268847658}
+  //   };
+  //   this.props.updateRooms(formattedBounds);
+  // }
   componentDidMount() {
     const searchMap = this.refs.searchMap;
     const mapOptions = {
@@ -13,11 +20,26 @@ class GoogleMap extends React.Component {
     };
 
     this.searchMap = new google.maps.Map(searchMap, mapOptions);
+    // console.log("GET BOUNDS", this.searchMap);
+
+    // this.props.updateRooms(formattedBounds);
+    // console.log("-------",this.searchMap);
+    // this.props.updateRooms(this.searchMap.getBounds());
+
     this.MarkerManager = new MarkerManager(this.searchMap);
     this.MarkerManager.updateMarkers(this.props.rooms);
 
     let input = document.getElementById('searchTextFieldHome');
     //have this link to top search bar (search rooms by location)
+    google.maps.event.addListener(this.searchMap, 'bounds_changed', ()=> {
+      const response = this.searchMap.getBounds().toJSON();
+      // console.log(this.searchMap.getBounds().toJSON());
+      const formattedBounds = {
+        northEast: {lat: response.north, lng: response.east},
+        southWest: {lat: response.south, lng: response.west}
+      };
+      this.props.updateRooms(formattedBounds);
+    });
   }
   //
   componentWillUpdate() {

@@ -10,7 +10,7 @@ const mapStateToProps = ({ session, rooms }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllRooms: () => dispatch(showAllRooms())
+  getAllRooms: (filters) => dispatch(showAllRooms(filters))
 });
 
 export default connect(

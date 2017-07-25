@@ -31,6 +31,7 @@ class CreateRoom extends React.Component {
     this.renderNumbers = this.renderNumbers.bind(this);
     this.updatePicUrl = this.updatePicUrl.bind(this);
     this.updateGeoLocation = this.updateGeoLocation.bind(this);
+    //
   }
 
   handleSubmit(e) {
@@ -40,7 +41,8 @@ class CreateRoom extends React.Component {
       {room: {host_id: this.props.currentUser.id }}
     );
     this.props.createRoom(room).then(
-      this.props.history.push(`/listings/${this.props.currentUser.id}`));
+      (data) => this.props.history.push(`/listings/${this.props.currentUser.id}`)
+    );
   }
 
 
@@ -99,7 +101,6 @@ class CreateRoom extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="new-room-form-container">
         <div className="new-room-form-box">

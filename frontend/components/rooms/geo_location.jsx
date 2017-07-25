@@ -32,21 +32,12 @@ class GeoLocation extends React.Component {
     });
   }
 
-  componenetDidUpdate(){
-    console.log("works");
-  }
-
-  componenetWillUpdate(){
-    console.log("works22");
-  }
-
   registerListeners(searchBox, map){
     let self = this;
 
     searchBox.addListener('places_changed', function() {
       // var latLon = google.maps.LatLngBounds();
       var place = searchBox.getPlaces()[0];
-      console.log(place);
       const long = place.geometry.viewport["b"]["b"];
       const latt = place.geometry.viewport["f"]["b"];
       var pos = {lat: latt, lng: long};

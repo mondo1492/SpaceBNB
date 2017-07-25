@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 import values from 'lodash/values';
 import {
   RECEIVE_ROOM,
+  REMOVE_ROOM,
   RECEIVE_ROOMS,
   RECEIVE_ROOMS_ERRORS
 } from '../actions/room_actions';
@@ -15,6 +16,10 @@ const roomReducer = (state = defaultState, action) => {
   Object.freeze(state);
   let nextState;
   switch(action.type) {
+    case REMOVE_ROOM:
+      nextState = Object.assign({}, state);
+      delete nextState.entities[action.room.id];
+      return nextState;
     case RECEIVE_ROOM:
       nextState = Object.assign({}, state);
       nextState.entities[action.room.id] = action.room;

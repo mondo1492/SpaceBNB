@@ -4,7 +4,8 @@ class Api::RoomsController < ApplicationController
   end
 
   def index
-    @rooms = Room.all
+    @rooms = Room.in_bounds(params[:bounds])
+    # @rooms = Room.all
   end
 
   def show

@@ -10,8 +10,6 @@ class MarkerManager {
   updateMarkers(rooms){
     const roomsObj = {};
     rooms = rooms || [];
-    console.log("ROOMS", rooms);
-    console.log('Time to Render some freaking rooms');
     rooms.forEach( room => (roomsObj[room.id] = room));
 
     rooms

@@ -6,10 +6,11 @@ export const addRoom = room => (
   })
 );
 
-export const showAllRooms = () => (
+export const showAllRooms = filters => (
   $.ajax({
     method: 'GET',
-    url: 'api/rooms'
+    url: 'api/rooms',
+    data: {bounds: filters}
   })
 );
 
