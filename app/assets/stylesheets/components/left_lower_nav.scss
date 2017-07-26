@@ -1,8 +1,14 @@
 .left-lower-nav {
+  padding-top: 60px;
+  position: fixed;
+  background: white;
+  z-index: 60;
+  width: 100%;
   display: flex;
   align-items: flex-end;
   flex-direction: row;
   height: 50px;
+  box-shadow: 0 0 2px 0px gray;
   button {
     cursor: pointer;
     outline: none;

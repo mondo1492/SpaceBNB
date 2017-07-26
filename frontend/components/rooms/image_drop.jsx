@@ -57,7 +57,7 @@ class DropForm extends React.Component {
     return(
       <div>
         {this.state.uploadedFileCloudinaryUrl === '' ? null :
-        <div >
+        <div className="img-drop-container">
           <img src={this.state.uploadedFileCloudinaryUrl} />
         </div>}
       </div>

@@ -1,37 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReactStars from 'react-stars';
 
 class MainDisplay extends React.Component {
-  componentWillMount() {
-    this.props.getAllRooms();
+  // componentWillMount() {
+  //   // this.props.getAllRooms();
+  // }
+  renderText() {
+    console.log("hit");
+    return(
+      <div>
+        <h2>Oops! No rooms in search area...</h2>
+      </div>
+
+    );
   }
 
   allRooms() {
     const rooms = this.props.entities ? this.props.entities : [];
-
+    const hope = this.renderText();
+    console.log("LENGTH", rooms.length);
     return(
       <ul>
+        { rooms.length === 0 ? hope : "" }
         {rooms.map((room, i) => (
           <li key={`room-${i}`}>
-
             <Link to={ room ? `/rooms/${room.id}` : "" }>
               <img src={ room ? `${room.pic_url}` : ""}
                 height="400"
                 width="400">
               </img>
             </Link>
-            <h4>{ room ? room.title : "" } </h4>
+            <h4>${ room ? room.price : "" } { room ? room.title : "" } </h4>
+            <h5>{ room ? room.room_type : "" } · { room ? room.beds : "" } beds</h5>
+            <ReactStars count={5} size={10} color1={'#00BEC5'} rating={5} edit={false} />
           </li>
         ))}
       </ul>
     );
   }
 
+
   render(){
     const displayAllRooms = this.allRooms();
     return(
-      <div>
-        <h2>Top Rated Rooms</h2>
+      <div className="display-all-rooms-container">
         <div className="display-all-rooms">
           {displayAllRooms}
         </div>

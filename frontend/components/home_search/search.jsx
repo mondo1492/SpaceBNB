@@ -6,8 +6,8 @@ import GoogleMap from './map';
 class Search extends React.Component {
   constructor(props){
     super(props);
-    this.props.getAllRooms();
-    this.updateRooms = this.updateRooms.bind(this);
+    // this.props.getAllRooms();
+    // this.updateRooms = this.updateRooms.bind(this);
   }
 
   updateRooms(filter) {
@@ -16,14 +16,19 @@ class Search extends React.Component {
 
   render() {
     return(
-      <div className="rooms-map-main-container">
-        <MainDisplayContainer />
-        <GoogleMap rooms={this.props.entities} updateRooms={this.updateRooms}/>
+      <div>
+
+        <div className="rooms-map-main-container">
+          <MainDisplayContainer />
+          <GoogleMap rooms={this.props.entities} updateRooms={this.updateRooms.bind(this)}/>
+        </div>
+
       </div>
+
     );
   }
 }
 
 export default Search;
-
+<span id="map-place-holder"></span>
 //make functional component

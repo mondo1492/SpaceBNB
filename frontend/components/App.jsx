@@ -18,15 +18,18 @@ const App = () => (
       <GreetingsContainer/>
       <LeftLowerNav/>
     </header>
-    <Switch>
-      <Route exact path="/s" component={ SearchContainer } />
-      <Route exact path="/" component={ SearchContainer } />
-      <Route exact path="/rooms/:id" component={ ShowRoomContainer } />
-      <ProtectedRoute exact path="/create" component={ CreateRoomContainer }/>
-      <ProtectedRoute path="/listings/:id" component={ ListingsContainer }/>
-    </Switch>
+    <div id="header-padder"></div>
+    <div id="all-content">
 
+      <Switch>
+        <Route exact path="/s" component={ SearchContainer } />
+        <Route exact path="/" component={ SearchContainer } />
+        <Route exact path="/rooms/:id" component={ ShowRoomContainer } />
+        <ProtectedRoute exact path="/create" component={ CreateRoomContainer }/>
+        <ProtectedRoute path="/listings/:id" component={ ListingsContainer }/>
+      </Switch>
 
+    </div>
   </div>
 );
 

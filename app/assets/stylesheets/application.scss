@@ -19,6 +19,14 @@
  }
 
 
+
+ #all-content {
+   margin: 0;
+   pading: 0;
+   position: relative;
+   z-index:50;
+ }
+
 @import './components/colors.scss';
 @import './components/header.scss';
 @import './components/modal.scss';
@@ -28,3 +36,11 @@
 @import './specific_styling/drop_downs.scss';
 @import './components/show_room.scss';
 @import './components/home_search.scss';
+// 
+// body {
+//    min-width:1000px !important;
+//    width: auto !important;
+//    width: 500px;
+//
+//
+// }

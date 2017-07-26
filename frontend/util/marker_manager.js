@@ -9,7 +9,7 @@ class MarkerManager {
 
   updateMarkers(rooms){
     const roomsObj = {};
-    rooms = rooms || [];
+    rooms = rooms.length === 0 ? [] : rooms ;
     rooms.forEach( room => (roomsObj[room.id] = room));
 
     rooms
