@@ -131,7 +131,10 @@ class Greeting extends React.Component {
             height="40" width="40">
           </img>
         </Link>
-          <input type="text" name="search" placeholder="Search.."></input>
+          <input id="searchTextFieldHome"
+            type="text"
+            name="search"
+            placeholder="Search rooms by location...."></input>
         </div>
         <div className="right-header-group">
           { leftDisplay }

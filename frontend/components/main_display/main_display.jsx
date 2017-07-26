@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 import ReactStars from 'react-stars';
 
 class MainDisplay extends React.Component {
-  // componentWillMount() {
-  //   // this.props.getAllRooms();
-  // }
-  renderText() {
-    console.log("hit");
+  nothingToDisplay() {
     return(
       <div>
         <h2>Oops! No rooms in search area...</h2>
@@ -18,11 +14,10 @@ class MainDisplay extends React.Component {
 
   allRooms() {
     const rooms = this.props.entities ? this.props.entities : [];
-    const hope = this.renderText();
-    console.log("LENGTH", rooms.length);
+    const nothingToDisplay = this.nothingToDisplay();
     return(
       <ul>
-        { rooms.length === 0 ? hope : "" }
+        { rooms.length === 0 ? nothingToDisplay : "" }
         {rooms.map((room, i) => (
           <li key={`room-${i}`}>
             <Link to={ room ? `/rooms/${room.id}` : "" }>

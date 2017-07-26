@@ -1,11 +1,9 @@
-class Api::RoomsController < ApplicationController
+class Api::ReviewsController < ApplicationController
   def index
-    @rooms = Room.in_bounds(params[:bounds]).includes(:user)
+    user = User.find(params[:id])
+    @listings = user.rooms
+    @review = Room.in_bounds(params[:bounds]).includes(:user)
     # @rooms = Room.all
-  end
-
-  def show
-    @room = Room.includes(:user).find(params[:id])
   end
 
   def create
