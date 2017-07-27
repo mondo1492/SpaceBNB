@@ -4,11 +4,11 @@ import RoomReviews from './reviews';
 import { viewReviews, addReview } from '../../actions/review_actions';
 import { withRouter } from 'react-router';
 
-const mapStateToProps = ({ session, rooms }, ownProps) => ({
-  room: rooms.entities[ownProps.match.params.id] || {},
-  currentUser: session.currentUser,
-  errors: rooms.errors
-});
+const mapStateToProps = ({ session, reviews }, ownProps) => {
+  return({
+  reviews: values(reviews.reviews) || [],
+  currentUser: session.currentUser
+});};
 
 const mapDispatchToProps = (dispatch) => {
   return {

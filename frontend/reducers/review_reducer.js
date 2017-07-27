@@ -5,7 +5,7 @@ import {
 } from '../actions/review_actions';
 
 const defaultState = Object.freeze({
-  reviews: []
+  reviews: {}
 });
 
 const reviewReducer = (state = defaultState, action) => {
@@ -13,7 +13,7 @@ const reviewReducer = (state = defaultState, action) => {
   let nextState;
   switch(action.type) {
     case RECEIVE_REVIEWS:
-      nextState = Object.assign({}, state, { entities: action.reviews });
+      nextState = Object.assign({}, state, { reviews: action.reviews });
       return nextState;
     case RECEIVE_REVIEW:
       nextState = Object.assign({}, state);

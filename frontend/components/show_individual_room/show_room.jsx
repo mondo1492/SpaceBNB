@@ -5,6 +5,7 @@ import Title from './title';
 import Features from './features';
 import Description from './description';
 import MoreDetails from './more_details';
+import ReviewsContainer from '../reviews/reviews_container';
 
 class ShowRoom extends React.Component {
   componentWillMount() {
@@ -37,9 +38,7 @@ class ShowRoom extends React.Component {
             <Description room={room} />
             <MoreDetails room={room} />
             <a href="reviews"></a>
-            <div className="show-page-reviews">
-              <h3>Reviews</h3>
-            </div>
+            <ReviewsContainer />
             <a href="#host"></a>
             <div className="show-page-host">
               <h3>Host info</h3>

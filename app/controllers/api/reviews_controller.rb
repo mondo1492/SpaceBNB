@@ -7,7 +7,7 @@ class Api::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if @review.save
-      render :show
+      render :show_specific
     else
       render json: @room.errors.full_messages, status: 422
     end
@@ -24,7 +24,7 @@ class Api::ReviewsController < ApplicationController
 
   private
 
-  def room_params
+  def review_params
     params.require(:review).permit(
       :room_id, :reviewer_name, :body, :rating)
   end

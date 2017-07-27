@@ -8,7 +8,7 @@ const defaultState = Object.freeze({
   entities: []
 });
 
-const listingReducer = (state = defaultState, action) => {
+const listingReducer = (state = [], action) => {
   Object.freeze(state);
   let nextState;
   switch(action.type) {
