@@ -14,21 +14,18 @@ export default class MarkerManager {
     rooms.forEach((room) => {
       roomsObj[room.id] = room;
     });
-    console.log("ROOOOOOMS", rooms);
 
     rooms
       .filter(room => !this.markers[room.id])
       .forEach((newRoom) => {
       this.createMarkerFromRoom(newRoom);
     });
-    console.log("GGGGGG22222", this.markers);
     Object.keys(this.markers)
       .filter(roomId => !roomsObj[roomId])
       .forEach((roomId) => this.removeMarker(this.markers[roomId]));
   }
 
   removeMarker(marker) {
-    console.log("GGGGGGGG", marker);
     this.markers[marker.roomId].setMap(null);
     delete this.markers[marker.roomId];
   }
@@ -38,7 +35,7 @@ export default class MarkerManager {
     const marker = new google.maps.Marker({
       position: pos,
       map: this.map,
-      icon: 'http://ruralshores.com/assets/marker-icon.png',
+      // icon: 'http://ruralshores.com/assets/marker-icon.png',
       animation: google.maps.Animation.DROP,
       roomId: room.id
     });

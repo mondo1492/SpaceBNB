@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :rooms
     resources :listings, only: :show
     resources :pictures, only: %i(new index create destroy)
+    resources :reviews, only: %i(show create)
   end
 end

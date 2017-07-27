@@ -6,6 +6,10 @@ import {
   RECEIVE_ROOMS,
   RECEIVE_ROOMS_ERRORS
 } from '../actions/room_actions';
+import {
+  RECEIVE_REVIEW,
+  RECEIVE_REVIEWS
+} from '../actions/review_actions';
 
 const defaultState = Object.freeze({
   entities: [],
