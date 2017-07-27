@@ -17,9 +17,9 @@ class Search extends React.Component {
     const beds = this.state.bed_params;
     const prices = this.state.price_params;
     const guest = this.state.guest_params;
-    filter["bed_params"] = { min: beds.min, max: beds.max};
-    filter["price_params"] = { min: prices.min, max: prices.max};
-    filter["guest_params"] = { min: guest.min, max: guest.max};
+    filter["bed_params"] = { min: beds.min ? beds.min : 1, max: beds.max};
+    filter["price_params"] = { min: prices.min ? prices.min : 0, max: prices.max};
+    filter["guest_params"] = { min: guest.min ? guest.min : 1, max: guest.max};
     this.props.getAllRooms(filter);
   }
 
@@ -56,6 +56,7 @@ class Search extends React.Component {
                 type="number"
                 onChange={this.updateBed('min')}
                 placeholder="Any number of beds"
+                min="1"
               />
           </li>
           <li>
@@ -64,6 +65,7 @@ class Search extends React.Component {
               type="number"
               onChange={this.updateGuest('max')}
               placeholder="Any number of guests"
+              min="1"
             />
           </li>
           <li>
@@ -72,6 +74,7 @@ class Search extends React.Component {
                 type="number"
                 onChange={this.updatePrice('max')}
                 placeholder="Any price"
+                min="0"
               />
           </li>
         </ul>

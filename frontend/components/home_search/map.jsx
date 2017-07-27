@@ -20,7 +20,8 @@ class GoogleMap extends React.Component {
     };
 
     this.searchMap = new google.maps.Map(searchMap, mapOptions);
-    this.MarkerManager = new MarkerManager(this.searchMap);
+    const infowindow = new google.maps.InfoWindow();
+    this.MarkerManager = new MarkerManager(this.searchMap, infowindow, this.handleMarkerClick.bind(this));
 
     // let input = document.getElementById('searchTextFieldHome');
 
@@ -65,6 +66,10 @@ class GoogleMap extends React.Component {
     if (nextProps.rooms !== this.props.rooms) {
       this.MarkerManager.updateMarkers(nextProps.rooms);
     }
+  }
+
+  handleMarkerClick(roomid) {
+    this.props.history.push(`/rooms/${roomid}`);
   }
 
   render() {

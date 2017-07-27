@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import ReactStars from 'react-stars';
 
 export default class MarkerManager {
-  constructor(map) {
+  constructor(map, infowindow, handleClick) {
     this.map = map;
     this.markers = {};
     this.removeMarker = this.removeMarker.bind(this);
+    this.infowindow = infowindow;
+    this.handleClick = handleClick;
   }
 
   updateMarkers(rooms) {
@@ -18,7 +21,7 @@ export default class MarkerManager {
     rooms
       .filter(room => !this.markers[room.id])
       .forEach((newRoom) => {
-      this.createMarkerFromRoom(newRoom);
+      this.createMarkerFromRoom(newRoom, this.infowindow, this.handleClick);
     });
     Object.keys(this.markers)
       .filter(roomId => !roomsObj[roomId])
@@ -30,17 +33,47 @@ export default class MarkerManager {
     delete this.markers[marker.roomId];
   }
 
-  createMarkerFromRoom(room) {
+  createMarkerFromRoom(room, infowindow, handleClick) {
     const pos = new google.maps.LatLng(room.lat, room.lng);
     const marker = new google.maps.Marker({
       position: pos,
       map: this.map,
-      // icon: 'http://ruralshores.com/assets/marker-icon.png',
-      animation: google.maps.Animation.DROP,
+      label: `$${room.price}`,
+      icon: 'http://res.cloudinary.com/dluh2fsyd/image/upload/v1500947278/gmap_icon_b2iudh.png',
+      // animation: google.maps.Animation.DROP,
       roomId: room.id
     });
     this.markers[marker.roomId] = marker;
+
+    marker.addListener('click', function () {
+      console.log(handleClick);
+      handleClick(room.id);
+    });
+    infowindow.addListener('click', function () {
+      console.log(handleClick);
+      handleClick(room.id);
+    });
+    var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      `<img src=${room.pic_url} height="100px" width="150px"></img>` +
+      `<h4 id="firstHeading" class="firstHeading">$${room.price} ${room.title}</h4>`+
+      `<h5>${room.room_type} · ${room.beds} beds</h5>`+
+      '<div id="bodyContent">'+
+      '</div>'+
+      '</div>';
+
+    marker.addListener('mouseover', function () {
+      infowindow.close();
+      infowindow.setContent(contentString);
+      infowindow.open(marker.map, marker);
+    });
+
+    marker.addListener('mouseout', function () {
+      infowindow.close();
+    });
   }
+
 }
 
 

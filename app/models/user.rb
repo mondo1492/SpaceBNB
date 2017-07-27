@@ -7,6 +7,10 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :host_id
 
+  has_many :trips,
+    primary_key: :id,
+    foreign_key: :guest_id
+
   attr_reader :password
 
   after_initialize :ensure_token

@@ -14,12 +14,12 @@ and React/Redux.  By the end of Week 9, this app will, at a minimum, satisfy the
 following criteria with smooth, bug-free navigation, adequate seed data and
 sufficient CSS styling:
 
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
-- [ ] Homes
+- [X] Hosting on Heroku
+- [X] New account creation, login, and guest/demo login
+- [X] Homes
 - [ ] Bookings
-- [ ] Homes search (by location & availability) & Google Maps on search
-- [ ] Reviews
+- [X] Homes search (by guest, beds, and price) & Google Maps on search
+- [X] Reviews
 
 ## Design Docs
 * [View Wireframes][wireframes]

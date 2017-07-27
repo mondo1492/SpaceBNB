@@ -6,7 +6,7 @@ class MainDisplay extends React.Component {
   nothingToDisplay() {
     return(
       <div>
-        <h2>Oops! No rooms in search area...</h2>
+        <h2>Oops! No rooms in search area or search criteria</h2>
       </div>
 
     );
@@ -28,7 +28,7 @@ class MainDisplay extends React.Component {
             </Link>
             <h4>${ room ? room.price : "" } { room ? room.title : "" } </h4>
             <h5>{ room ? room.room_type : "" } · { room ? room.beds : "" } beds</h5>
-            <ReactStars count={5} size={10} color1={'#00BEC5'} rating={5} edit={false} />
+            <ReactStars className="react-stars" count={5} size={10} color2={'#00BEC5'} value={room.review_rating} edit={false} />
           </li>
         ))}
       </ul>

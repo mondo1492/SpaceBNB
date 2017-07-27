@@ -22,7 +22,6 @@ const App = () => (
     <div id="all-content">
 
       <Switch>
-        <Route exact path="/s" component={ SearchContainer } />
         <Route exact path="/" component={ SearchContainer } />
         <Route exact path="/rooms/:id" component={ ShowRoomContainer } />
         <ProtectedRoute exact path="/create" component={ CreateRoomContainer }/>

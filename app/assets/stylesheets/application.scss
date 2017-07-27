@@ -27,6 +27,8 @@
    z-index:50;
  }
 
+ .gm-style-iw + div {display: none;}
+
 @import './components/colors.scss';
 @import './components/header.scss';
 @import './components/modal.scss';
@@ -37,7 +39,9 @@
 @import './components/show_room.scss';
 @import './components/home_search.scss';
 @import './specific_styling/search_params.scss';
-@import './components/reviews.scss';
+@import './components/review-create.scss';
+@import './specific_styling/react_stars.scss';
+@import './components/review_index.scss';
 //
 // body {
 //    min-width:1000px !important;

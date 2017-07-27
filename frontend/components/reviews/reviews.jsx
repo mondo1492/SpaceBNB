@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import AddReviewModal from './create_review';
+import ReactStars from 'react-stars';
+import strftime from "strftime";
 
 class RoomReviews extends React.Component {
   constructor(props){
@@ -22,14 +24,34 @@ class RoomReviews extends React.Component {
   //   ));
   // }
 
+  formatDate(date) {
+    return strftime('%B %d, %Y', new Date(date));
+  }
+
   allReviews() {
+
+
     return(
-      <ul>
+      <ul className="index-list">
         {this.props.reviews.reverse().map((review, i) =>(
           <li className="review-index-item" key={review.id}>
-            <h4>Name: {review.reviewer_name ? review.reviewer_name : "" }</h4>
-            <h4>Body: {review.body ? review.body : "" }</h4>
-            <h4>Rating: {review.rating ? review.rating : "" }</h4>
+            <div className="top-of-review">
+              <img src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1501181760/reviewer_iyelfn.png"></img>
+              <div className="review-details">
+                <span>{review.reviewer_name ? review.reviewer_name : "" }</span>
+                <span>{review.created_at ? this.formatDate(review.created_at) : "" }</span>
+                  <ReactStars
+                    className="react-stars"
+                    count={5} size={15} color2={'#00BEC5'}
+                    value={review.rating ? review.rating : ""} edit={false} />
+                </div>
+              </div>
+              <div>
+
+            </div>
+            <div className="bottom-of-review">
+              {review.body ? review.body : "" }
+            </div>
           </li>
         ))}
       </ul>
@@ -46,13 +68,30 @@ class RoomReviews extends React.Component {
     );
   }
 
+  reviewLogic() {
+    let tot = 0;
+    let sumStars = 0;
+    this.props.reviews.forEach( review => {
+      sumStars += review.rating;
+      tot += 1;
+      console.log(tot);
+    });
+    return (sumStars / tot);
+  }
+
   render() {
     const displayAllReviews = this.allReviews();
     const displayAddButton = this.props.currentUser ? this.addButton() : "";
+    const reviewCount = this.props.reviews.length;
+    const reviewCountDisplayText = reviewCount === 1 ? `${reviewCount} Review` : `${reviewCount} Reviews`;
+    const ratingLogic = this.reviewLogic();
     return(
       <div className="show-page-reviews">
-        <h2>Reviews</h2>
-        {displayAddButton}
+        <div className="review-header">
+          <h2>{reviewCountDisplayText}</h2>
+          <ReactStars className="react-stars" count={5} size={30} color2={'#00BEC5'} value={ratingLogic} edit={false} />
+          {displayAddButton}
+        </div>
         {displayAllReviews}
       </div>
     );
