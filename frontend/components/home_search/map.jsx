@@ -36,10 +36,12 @@ class GoogleMap extends React.Component {
       console.log(this.props.rooms);
       // this.MarkerManager.updateMarkers(this.props.rooms);
     };
-    let input = document.getElementById('change-bed-number');
+    let changeBed = document.getElementById('change-bed-number');
     // input.addEventListener('click', ()=> console.log("works"));
     google.maps.event.addListener(this.searchMap, 'bounds_changed', this.updateMap);
-    input.addEventListener('click', this.updateMap);
+
+
+    changeBed.addEventListener('click', this.updateMap);
   }
 
   componentWillUpdate() {

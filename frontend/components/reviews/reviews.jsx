@@ -23,7 +23,6 @@ class RoomReviews extends React.Component {
   // }
 
   allReviews() {
-    console.log(this.props.reviews);
     return(
       <ul>
         {this.props.reviews.reverse().map((review, i) =>(
@@ -37,17 +36,24 @@ class RoomReviews extends React.Component {
     );
   }
 
-  render() {
-    const reviewerName = this.props.currentUser.username ? this.props.currentUser.username : "";
+  addButton() {
+    const reviewerName = this.props.currentUser.username;
     const roomId = this.props.match.params.id;
+    return(
+      <div>
+        <AddReviewModal reviewerName={reviewerName} roomId= {roomId} addReview= {this.props.addReview}/>
+      </div>
+    );
+  }
+
+  render() {
     const displayAllReviews = this.allReviews();
+    const displayAddButton = this.props.currentUser ? this.addButton() : "";
     return(
       <div className="show-page-reviews">
         <h2>Reviews</h2>
-        <AddReviewModal reviewerName={reviewerName} roomId= {roomId} addReview= {this.props.addReview}/>
+        {displayAddButton}
         {displayAllReviews}
-
-
       </div>
     );
   }
