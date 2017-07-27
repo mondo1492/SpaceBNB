@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :listings, only: :show
     resources :pictures, only: %i(new index create destroy)
     resources :reviews, only: %i(show create)
+    resources :trips, only: %i(show create index)
   end
 end
