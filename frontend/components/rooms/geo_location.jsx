@@ -56,26 +56,6 @@ class GeoLocation extends React.Component {
         });
         self.map.setCenter(pos, 14);
 
-        // self.map.addOverlay(new google.maps.Marker(
-        //   new google.maps.LatLng(latt, long)));
-        //   var point = new google.maps.LatLng(latt, long);
-        //   map.setCenter(point, 10);
-        //   var marker = new google.maps.Marker(point);
-        //   map.addOverlay(marker);
-      // console.log(latLon);
-      // var icon = {
-      //   url: place.icon,
-      //   size: new google.maps.Size(71, 71),
-      //   origin: new google.maps.Point(0, 0),
-      //   anchor: new google.maps.Point(17, 34),
-      //   scaledSize: new google.maps.Size(25, 25)
-      // };
-      // new google.maps.Marker({
-      //   map: map,
-      // icon: icon,
-      // title: place.name,
-      // position: place.geometry.location
-      // })
     });
 
     // const x = google.maps.event.addListener(this.map, 'idle', () => {

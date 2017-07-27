@@ -134,7 +134,7 @@ class Greeting extends React.Component {
           <input id="searchTextFieldHome"
             type="text"
             name="search"
-            placeholder="Search rooms by location...."></input>
+            placeholder="Search by location...."></input>
         </div>
         <div className="right-header-group">
           { leftDisplay }

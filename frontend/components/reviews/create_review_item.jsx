@@ -27,7 +27,7 @@ class ReviewItem extends React.Component {
     this.props.addReview(review);
   }
 
-  
+
 
 
   update(field) {
@@ -50,9 +50,9 @@ class ReviewItem extends React.Component {
     console.log(this.props.reviewerName);
     console.log(this.props.roomId);
     return(
-      <div>
+      <div className="review-container">
         <div>
-          <h3 id="review-body">Body</h3>
+          <h3 id="review-body">Rate your experience!</h3>
             <textarea
                 value={this.state.body}
                 onChange={this.update('body')}

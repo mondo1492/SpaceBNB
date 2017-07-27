@@ -27,21 +27,30 @@ class GoogleMap extends React.Component {
     this.updateMap = () => {
       console.log("updating map?");
       const response = this.searchMap.getBounds().toJSON();
+      // const place = searchBoxHeader.getPlaces()[0];
+      // console.log();
+      // const long = place.geometry.viewport["b"]["b"];
+      // const latt = place.geometry.viewport["f"]["b"];
+      // var pos = {lat: latt, lng: long};
+      // this.searchMap.setCenter(pos, 14);
       this.formattedBounds = {
         northEast: {lat: response.north, lng: response.east},
         southWest: {lat: response.south, lng: response.west}
       };
 
       this.props.updateRooms(this.formattedBounds);
-      console.log(this.props.rooms);
+      // console.log(this.props.rooms);
       // this.MarkerManager.updateMarkers(this.props.rooms);
     };
     let changeBed = document.getElementById('change-bed-number');
+    let changeLocation = document.getElementById('searchTextFieldHome');
+    let searchBoxHeader = new google.maps.places.SearchBox(changeLocation);
     // input.addEventListener('click', ()=> console.log("works"));
     google.maps.event.addListener(this.searchMap, 'bounds_changed', this.updateMap);
 
 
     changeBed.addEventListener('click', this.updateMap);
+    // searchBoxHeader.addListener('places_changed', this.updateMap);
   }
 
   componentWillUpdate() {
