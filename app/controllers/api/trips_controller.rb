@@ -28,4 +28,9 @@ class Api::TripsController < ApplicationController
     params.require(:booking).permit(
       :start_date, :end_date, :room_id, :guest_id, :num_guests, :total_cost)
   end
+
+  def booking_request
+    params.require(:booking_request).permit(
+      :start_date, :end_date, :room_id)
+  end
 end

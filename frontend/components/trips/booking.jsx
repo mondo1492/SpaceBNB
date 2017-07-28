@@ -6,8 +6,6 @@ class Booking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      endDate: null,
-      startDate: null,
       booking: {
         num_guests: "",
         total_cost: ""
@@ -19,9 +17,9 @@ class Booking extends React.Component {
 
   componentWillMount() {
     this.props.getAllTripsSpecific(this.props.match.params.id);
-
-
   }
+
+
   handleSubmit(e) {
     e.preventDefault();
     const booking = merge(
@@ -64,10 +62,74 @@ class Booking extends React.Component {
 
   }
 
-  calculate(displayCost) {
-    const bool = this.state.booking.num_guests && this.state.endDate && this.state.startDate;
+  blockOutDates() {
+    let allBlockedOutDays = [];
+    let subDays = [];
+    this.props.trips.forEach( (trip) => {
+      let currentDate = new Date(trip.start_date);
+      while (currentDate <= new Date(trip.end_date)) {
+        subDays.push((new Date(currentDate)));
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+    });
+    subDays.forEach( (day) => {
+      allBlockedOutDays.push(String(day));
+    });
+    return allBlockedOutDays;
+  }
 
-    const show = bool ? this.showButton(displayCost) : "";
+  selectedOutDates(start, end) {
+    console.log("START", start);
+    console.log("END", end);
+    let allBlockedOutDays2 = [];
+    let subDays2 = [];
+    let currentDate2 = new Date(start);
+    while (currentDate2 <= new Date(end)) {
+      subDays2.push((new Date(currentDate2)));
+      currentDate2.setDate(currentDate2.getDate() + 1);
+    }
+    subDays2.forEach( (day) => {
+      allBlockedOutDays2.push(String(day));
+    });
+    return allBlockedOutDays2;
+  }
+
+  overlap() {
+    let arr = this.selectedOutDates(this.state.startDate['_d'], this.state.endDate['_d']);
+    let isInDate = false;
+    arr.forEach((day) => {
+      if (this.blockOutDates().includes(""+day+"")) {
+        isInDate = true;
+      }
+    });
+    return isInDate;
+  }
+
+
+  clientSideCheck() {
+    // console.log(this.state.endDate, this.state.startDate);
+    if (this.state.endDate && this.state.startDate) {
+      let bool = this.overlap();
+      return bool;
+    }
+    return true;
+  }
+
+  showBookingError() {
+    return (
+      <div>
+        <h4>Sorry, the days you have selected have already been booked</h4>
+        <h4>Please select other dates</h4>
+      </div>
+    );
+  }
+
+  calculate(displayCost) {
+    const bool2 = this.state.booking.num_guests && this.state.endDate && this.state.startDate;
+    const showError = this.clientSideCheck() ?   this.showBookingError() : "";
+    const showErrorDisplay = (this.state.endDate && this.state.startDate) ? showError : "";
+    const show = (bool2 && !this.clientSideCheck()) ? this.showButton(displayCost) : "";
+    const blockedDates = this.blockOutDates();
     return(
       <div className="guest-booking">
         <div>
@@ -88,9 +150,11 @@ class Booking extends React.Component {
                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
                 focusedInput={ this.state.focusedInput }
                 onFocusChange={ focusedInput => this.setState({ focusedInput }) }
+                isDayBlocked={ (day) => blockedDates.includes(""+ day['_d']+"")}
             />
         </div>
         {show}
+        {showErrorDisplay}
       </div>
 
     );
@@ -109,7 +173,29 @@ class Booking extends React.Component {
     );
   }
 
+ //
+ //  addDays(days) {
+ //    let dat = new Date(this.valueOf("2010-01-14"));
+ //    dat.setDate(dat.getDate() + days);
+ //    return dat;
+ //  }
+ //
+ //  getDates(startDate, stopDate) {
+ //    var dateArray = new Array();
+ //    var currentDate = new Date(currentDate);
+ //    while (currentDate <= stopDate) {
+ //      dateArray.push(currentDate);
+ //      currentDate = currentDate.addDays(1);
+ //    }
+ //   return dateArray;
+ // }
+ //
+
+
+
+
   render() {
+    this.blockOutDates();
     let displayCost = 0;
     if (this.state.startDate && this.state.endDate) {
       displayCost = this.state.endDate.diff(this.state.startDate, 'days');

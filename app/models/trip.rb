@@ -19,4 +19,13 @@ class Trip < ApplicationRecord
   def room_url
     self.room.pic_url
   end
+
+  def overlapping_requests
+    self
+      .where.not(id: self.id)
+      .where(room_id: room_id)
+      .where(<<-SQL, start_date: start_date, end_date: end_date)
+         NOT( (start_date > :end_date) OR (end_date < :start_date) )
+      SQL
+  end
 end
