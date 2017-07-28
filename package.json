@@ -23,7 +23,6 @@
     "react-thunk": "^1.0.0",
     "react-virtualized-select": "^3.1.0",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "strftime": "^0.10.0",
     "superagent": "^3.5.2",
@@ -48,6 +47,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mondo1492/SpaceBNB.git"
+  },
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
   },
   "keywords": [],
   "author": "",

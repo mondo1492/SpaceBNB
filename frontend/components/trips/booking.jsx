@@ -83,8 +83,6 @@ class Booking extends React.Component {
   }
 
   selectedOutDates(start, end) {
-    console.log("START", start);
-    console.log("END", end);
     let allBlockedOutDays2 = [];
     let subDays2 = [];
     let currentDate2 = new Date(start);
@@ -111,7 +109,6 @@ class Booking extends React.Component {
 
 
   clientSideCheck() {
-    // console.log(this.state.endDate, this.state.startDate);
     if (this.state.endDate && this.state.startDate) {
       let bool = this.overlap();
       return bool;
@@ -199,7 +196,6 @@ class Booking extends React.Component {
 
 
   render() {
-    console.log(this.state);
     let displayCost = 0;
     if (this.state.startDate && this.state.endDate) {
       displayCost = this.state.endDate.diff(this.state.startDate, 'days');
