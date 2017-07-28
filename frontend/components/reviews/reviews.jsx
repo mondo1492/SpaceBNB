@@ -74,7 +74,6 @@ class RoomReviews extends React.Component {
     this.props.reviews.forEach( review => {
       sumStars += review.rating;
       tot += 1;
-      console.log(tot);
     });
     return (sumStars / tot);
   }

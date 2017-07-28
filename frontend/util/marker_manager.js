@@ -46,11 +46,9 @@ export default class MarkerManager {
     this.markers[marker.roomId] = marker;
 
     marker.addListener('click', function () {
-      console.log(handleClick);
       handleClick(room.id);
     });
     infowindow.addListener('click', function () {
-      console.log(handleClick);
       handleClick(room.id);
     });
     var contentString = '<div id="content">'+
@@ -91,15 +89,11 @@ export default class MarkerManager {
 //     rooms.forEach( room => (this.markers[room.id] = room));
 //     const newMarkers = this.markers.filter((obj) =>  obj !== undefined );
 //     // const newMarkers = this.markers.keys.forEach( room => (this.markers[room.id] = room));
-//     console.log("ROOOMS", rooms);
-//     console.log("MARKERS", newMarkers);
-//     // console.log("ROOOMS", newMarkers);
 //
 //     newMarkers
 //       .forEach((roomId) => this.removeMarker(newMarkers[newMarkers.roomId]));
 //     rooms
 //       .forEach( room => this.createMarkerFromRoom(room));
-//     // console.log("MARKERS", this.markers);
 //
 //     // Object.keys(this.markers)
 //     //   .filter(roomId => !this.markers[this.markers.id])

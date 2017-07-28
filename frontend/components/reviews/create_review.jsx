@@ -21,7 +21,6 @@ class AddReviewModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     if (nextProps.rating !== "" && nextProps.body !== "") {
       this.onModalClose();
     }

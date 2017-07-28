@@ -84,7 +84,6 @@ class Search extends React.Component {
   }
 
   render() {
-    console.log("Yo");
     return(
       <div>
         {this.searchParameters()}

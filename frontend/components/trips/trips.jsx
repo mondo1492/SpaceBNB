@@ -5,7 +5,6 @@ import strftime from 'strftime';
 class Trips extends React.Component {
   componentWillMount() {
     this.props.viewTrips();
-    console.log(this.props);
   }
 
   formatDate(date) {
@@ -13,7 +12,6 @@ class Trips extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const trips = this.props.trips ? this.props.trips : [];
     return(
       <div>

@@ -63,7 +63,6 @@ class GeoLocation extends React.Component {
     //   const bounds = {
     //     northEast: { lat:north, lng: east },
     //     southWest: { lat: south, lng: west } };
-    //   console.log(bounds);
     // });
     // const y = google.maps.event.addListener(this.map, 'click', (event) => {
     //   const coords = getCoordsObj(event.latLng);
@@ -124,7 +123,6 @@ export default withRouter(GeoLocation);
 //           var bounds = new google.maps.LatLngBounds();
 //           places.forEach(function(place) {
 //             if (!place.geometry) {
-//               console.log("Returned place contains no geometry");
 //               return;
 //             }
 //             var icon = {

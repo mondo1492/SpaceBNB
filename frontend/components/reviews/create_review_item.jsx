@@ -18,12 +18,10 @@ class ReviewItem extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("HERE");
     const review = merge(
       {}, {review: this.state.review},
       {review: {reviewer_name: this.props.reviewerName, room_id: this.props.roomId}}
     );
-    console.log(review);
     this.props.addReview(review);
   }
 
@@ -47,8 +45,6 @@ class ReviewItem extends React.Component {
   }
 
   render() {
-    console.log(this.props.reviewerName);
-    console.log(this.props.roomId);
     return(
       <div className="review-container">
         <div>
