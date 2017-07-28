@@ -24,7 +24,7 @@ class CreateRoom extends React.Component {
           num_guests: 1,
           bedrooms: 1,
           beds: 1,
-          pic_url: "test"
+          pic_url: "http://res.cloudinary.com/dluh2fsyd/image/upload/v1501036534/UFO_Phil_s_Alcatraz_Pyramid_Painting_vxlujw.jpg"
         }
       };
     this.handleSubmit = this.handleSubmit.bind(this);

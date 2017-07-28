@@ -23,17 +23,23 @@ class UserListings extends React.Component {
 
   allRoomListed() {
     return(
-      <ul>
-        {this.props.entities.map((room, i) =>(
-          <li className="listing-index-item" key={room.id}>
-            <h4>{room.title}</h4>
-            <h4>{room.id}</h4>
-            <button
-              className='delete-button'
-              value={room.id}
-              onClick={this.handleClick}>
-              Remove!
-            </button>
+      <ul className="listing-index-container">
+        {this.props.entities.reverse().map((room, i) =>(
+          <li className="listing-index" key={room.id}>
+            <div className="listing-index-item">
+              <img src={ room.pic_url ? room.pic_url : "" }></img>
+              <div>
+                <h4>Title: { room.title ? room.title : "" }</h4>
+                <h4>Price: ${ room.price ? room.price : "" } per day</h4>
+                <button
+                  className='delete-button'
+                  value={room.id}
+                  onClick={this.handleClick}>
+                  Remove this listing
+                </button>
+              </div>
+            </div>
+
           </li>
         ))}
       </ul>
@@ -42,9 +48,10 @@ class UserListings extends React.Component {
 
   render() {
     const displayAllRooms = this.allRoomListed();
+    const username = this.props.currentUser.username ? this.props.currentUser.username : "";
     return(
       <div>
-        <h2>Listings</h2>
+        <h2>Hi, {username}! Here are your current listings</h2>
         {displayAllRooms}
       </div>
     );

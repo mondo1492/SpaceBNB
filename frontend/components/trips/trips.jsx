@@ -19,7 +19,7 @@ class Trips extends React.Component {
       <div>
         <h2>Your trips!</h2>
         <ul className="trip-index">
-          {trips.map((trip, i) => (
+          {trips.reverse().map((trip, i) => (
             <li key={`trip-${i}`}>
               <div className="trip-item">
                 <img src={ trip.room_url ? trip.room_url : "" }></img>

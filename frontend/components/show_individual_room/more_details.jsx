@@ -51,7 +51,7 @@ class Description extends React.Component{
         </div>
         <div className="detail-container">
           <div className="detail-item">
-            <h4>Prices</h4>
+            <h4>Price</h4>
           </div>
             <div className="detail-list">
               <ul>

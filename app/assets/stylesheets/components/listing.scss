@@ -1,16 +1,16 @@
-.trip-index {
+.listing-index-container {
   list-style: none;
 }
 
-.trip-item {
+.listing-index-item {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-bottom: 20px;
   img {
     height: 200px;
     width: 300px;
   }
   div {
-
   }
 }
