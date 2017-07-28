@@ -4,4 +4,5 @@ class Trip < ApplicationRecord
     foreign_key: :guest_id
 
   belongs_to :room
+
 end

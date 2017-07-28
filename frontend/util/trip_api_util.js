@@ -13,7 +13,15 @@ export const showAllTrips = () => (
   })
 );
 
-export const showRoom = id => (
+export const getAllTripsSpecific = id => (
+  $.ajax({
+    method: 'GET',
+    url: `api/trips/specific/${id}`,
+  })
+);
+
+
+export const showTrip = id => (
   $.ajax({
     method: 'GET',
     url: `api/trips/${id}`

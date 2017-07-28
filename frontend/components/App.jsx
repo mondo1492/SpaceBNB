@@ -11,7 +11,8 @@ import GoogleMap from './google_map/map';
 import ListingsContainer from './user_listings/user_listings_container';
 import ShowRoomContainer from './show_individual_room/show_room_container';
 import SearchContainer from './home_search/search_container';
-
+import TripsContainer from './trips/trips_container';
+// <Route exact path="/" component={ TripsContainer } />
 const App = () => (
   <div>
     <header>
@@ -22,7 +23,7 @@ const App = () => (
     <div id="all-content">
 
       <Switch>
-        <Route exact path="/" component={ SearchContainer } />
+        <Route exact path="/" component={  SearchContainer } />
         <Route exact path="/rooms/:id" component={ ShowRoomContainer } />
         <ProtectedRoute exact path="/create" component={ CreateRoomContainer }/>
         <ProtectedRoute path="/listings/:id" component={ ListingsContainer }/>

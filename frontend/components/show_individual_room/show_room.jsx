@@ -6,6 +6,7 @@ import Features from './features';
 import Description from './description';
 import MoreDetails from './more_details';
 import ReviewsContainer from '../reviews/reviews_container';
+import TripsContainer from '../trips/trips_container';
 
 class ShowRoom extends React.Component {
   componentWillMount() {
@@ -49,7 +50,7 @@ class ShowRoom extends React.Component {
             </div>
           </div>
           <div className="floating-booking">
-
+            <TripsContainer />
           </div>
           <div className="bottom"></div>
         </div>

@@ -1,6 +1,7 @@
 export const RECEIVE_TRIP = 'RECEIVE_TRIP';
 export const RECEIVE_TRIPS = 'RECEIVE_TRIPS';
-import * as APITripUtil from '../util/trips_api_util';
+export const RECEIVE_SPECIFIC_TRIPS = 'RECEIVE_SPECIFIC_TRIPS';
+import * as APITripUtil from '../util/trip_api_util';
 
 
 export const receiveTrip = trip => ({
@@ -13,6 +14,17 @@ export const receiveTrips = trips => ({
   trips
 });
 
+export const receiveSpecificTrips = trips => ({
+  type: RECEIVE_SPECIFIC_TRIPS,
+  trips
+});
+
+
+export const getAllTripsSpecific = id => dispatch => {
+  return APITripUtil.getAllTripsSpecific(id).then(
+    response => dispatch(receiveSpecificTrips(response))
+  );
+};
 
 export const viewTrips = () => dispatch => {
   return APITripUtil.showAllTrips().then(

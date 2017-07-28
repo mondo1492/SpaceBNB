@@ -1,7 +1,12 @@
 class Api::TripsController < ApplicationController
   def index
-    user = User.find(params[:id])
-    @trips = user.trips.all
+    @trips = current_user.trips.all
+  end
+
+  def room_specific_index
+    room = Room.find(params[:id])
+    @trips = room.trips.all
+    render :room_specific_index
   end
 
   def show
@@ -20,7 +25,7 @@ class Api::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(
+    params.require(:booking).permit(
       :start_date, :end_date, :room_id, :guest_id, :num_guests, :total_cost)
   end
 end
