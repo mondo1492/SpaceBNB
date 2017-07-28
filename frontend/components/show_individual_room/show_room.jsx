@@ -33,7 +33,7 @@ class ShowRoom extends React.Component {
         {this.bannerPicture()}
         <div className="show-room-container">
           <div className="show-main-content">
-            <NavLinks url={`#/rooms/${this.props.match.params.id}`}/>
+
             <Title room={room}  />
             <Features room={room} />
             <Description room={room} />
@@ -41,18 +41,10 @@ class ShowRoom extends React.Component {
             <a href="reviews"></a>
             <ReviewsContainer />
             <a href="#host"></a>
-            <div className="show-page-host">
-              <h3>Host info</h3>
-            </div>
-            <a name="location"></a>
-            <div className="show-page-location">
-              <h3>Location</h3>
-            </div>
           </div>
           <div className="floating-booking">
             <TripsContainer />
           </div>
-          <div className="bottom"></div>
         </div>
       </div>
     );
@@ -60,3 +52,12 @@ class ShowRoom extends React.Component {
 }
 
 export default ShowRoom;
+// add back in when have time
+// <NavLinks url={`#/rooms/${this.props.match.params.id}`}/>
+// <div className="show-page-host">
+//   <h3>Host info</h3>
+// </div>
+// <a name="location"></a>
+// <div className="show-page-location">
+//   <h3>Location</h3>
+// </div>

@@ -69,10 +69,13 @@ class Greeting extends React.Component {
           <div className="dropdown-content">
             <ul className="dropdown-menu">
               <li>
-                <Link to='/create'>Add a new listing</Link>
+                <Link to='/trips'>View your trips</Link>
               </li>
               <li >
                 <Link to={`/listings/${currentUser.id}`}>View your listings</Link>
+              </li>
+              <li>
+                <Link to='/create'>Add a new listing</Link>
               </li>
               <li>
                 <Link
@@ -131,10 +134,6 @@ class Greeting extends React.Component {
             height="40" width="40">
           </img>
         </Link>
-          <input id="searchTextFieldHome"
-            type="text"
-            name="search"
-            placeholder="Search by location...."></input>
         </div>
         <div className="right-header-group">
           { leftDisplay }
@@ -155,3 +154,8 @@ class Greeting extends React.Component {
 }
 
 export default Greeting;
+// add after get everything else done
+// <input id="searchTextFieldHome"
+//   type="text"
+//   name="search"
+//   placeholder="Search by location...."></input>

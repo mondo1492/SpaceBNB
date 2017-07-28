@@ -8,6 +8,7 @@ class Title extends React.Component{
         <div className="show-page-title-left">
           <h2>{ room.title ? room.title : "" }</h2>
           <h4>{ room.address ? room.address : "" }</h4>
+          <h4>With your host, {room.host_name ? room.host_name : "" }</h4>
         </div>
         <div className="show-page-title-right">
           <img src=""></img>

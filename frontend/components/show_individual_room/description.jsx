@@ -9,7 +9,6 @@ class Description extends React.Component{
         <h2>About this listing</h2>
         <h4>The space</h4>
         <p>{room.description ? room.description : "" }</p>
-        <Link to="/">Contact Host</Link>
       </div>
     );
   }

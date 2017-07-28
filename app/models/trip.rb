@@ -15,4 +15,8 @@ class Trip < ApplicationRecord
   def host_name
     self.room.host_name
   end
+
+  def room_url
+    self.room.pic_url
+  end
 end

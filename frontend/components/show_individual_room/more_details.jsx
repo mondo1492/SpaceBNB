@@ -57,7 +57,7 @@ class Description extends React.Component{
               <ul>
                 <li>
                   <h4>$ </h4>
-                  <h4>{ room.price ? room.price : "" }</h4>
+                  <h4 id="cost-bold">{ room.price ? room.price : "" }</h4>
                   <h4> per night</h4>
                 </li>
               </ul>
