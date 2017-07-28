@@ -15,7 +15,7 @@ class Trips extends React.Component {
     const trips = this.props.trips ? this.props.trips : [];
     return(
       <div>
-        <h2>Your trips!</h2>
+        <h2 id="your-trips">Your trips!</h2>
         <ul className="trip-index">
           {trips.reverse().map((trip, i) => (
             <li key={`trip-${i}`}>

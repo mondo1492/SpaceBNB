@@ -36,3 +36,20 @@
     color: white;
   }
 }
+
+.calculate-button-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 15px;
+    text-align: center;
+    background-color: $orange;
+    color: white;
+  }
+}

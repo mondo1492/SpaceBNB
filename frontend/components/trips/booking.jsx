@@ -56,7 +56,10 @@ class Booking extends React.Component {
 
   showButton(displayCost) {
     return(
-      <button className="calculate-button" value={displayCost} onClick={this.update('total_cost')}>Calculate Price</button>
+      <div className="calculate-button-container">
+        <button className="calculate-button" value={displayCost} onClick={this.update('total_cost')}>Confirm number of guests and dates</button>
+      </div>
+
     );
 
   }
@@ -66,14 +69,15 @@ class Booking extends React.Component {
 
     const show = bool ? this.showButton(displayCost) : "";
     return(
-      <div>
+      <div className="guest-booking">
         <div>
           <h2>Guests</h2>
           <input
-            type="text"
+            type="number"
             value={this.state.booking.num_guests}
             onChange={this.update('num_guests')}
             placeholder="Number of Guests"
+            min={1}
           />
         </div>
         <div>
@@ -95,8 +99,11 @@ class Booking extends React.Component {
   book(displayCost) {
     return(
       <div className="book-room-show-price">
-        <h2>Your total cost is ${displayCost}</h2>
-        <button className="book-button" onClick={this.handleSubmit}>Book This Room!</button>
+        <div>
+          <h2>Your total cost is </h2>
+          <h2 className="booking-price">${displayCost}</h2>
+        </div>
+        <button className="calculate-button" onClick={this.handleSubmit}>Book This Room!</button>
       </div>
 
     );

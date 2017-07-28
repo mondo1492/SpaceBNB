@@ -37,8 +37,8 @@ class AddReviewModal extends React.Component {
   render() {
     const {reviewerName, roomId} = this.props;
     return(
-      <div>
-        <button onClick={this.openModal}>Add a review!</button>
+      <div className="review-button-main">
+        <button onClick={this.openModal}>Review this room!</button>
           <Modal
             isOpen={this.state.modalOpen}
             onRequestClose={this.onModalClose}

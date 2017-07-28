@@ -128,12 +128,13 @@ class Greeting extends React.Component {
     return(
       <section className="header">
         <div className="left-header-group">
-          <Link to='/'>
-          <img
-            src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500430834/rocketLogo_ap6uiz.svg"
-            height="40" width="40">
-          </img>
-        </Link>
+
+            <a href="/">
+            <img
+              src="http://res.cloudinary.com/dluh2fsyd/image/upload/v1500430834/rocketLogo_ap6uiz.svg"
+              height="40" width="40">
+            </img>
+          </a>
         </div>
         <div className="right-header-group">
           { leftDisplay }

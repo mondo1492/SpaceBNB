@@ -51,7 +51,7 @@ class UserListings extends React.Component {
     const username = this.props.currentUser.username ? this.props.currentUser.username : "";
     return(
       <div>
-        <h2>Hi, {username}! Here are your current listings</h2>
+        <h2 id="your-listings">Hi, {username}! Here are your current listings</h2>
         {displayAllRooms}
       </div>
     );

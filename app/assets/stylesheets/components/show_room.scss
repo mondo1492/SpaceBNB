@@ -177,4 +177,58 @@
   div {
     padding-left: 10px;
   }
+
+
+}
+
+.guest-booking {
+  padding: 10px;
+  padding-bottom: 80px;
+  width: 400px;
+  border: 1px solid lightgrey;
+  div {
+    h2 {
+      font-size: 15px;
+    }
+    input {
+      font-size: 15px;
+      margin-left: 20px;
+    }
+  }
+
+}
+.calculate-button {
+    display: flex;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 15px;
+    text-align: center;
+    background-color: $orange;
+    color: white;
+
+}
+
+.book-room-show-price {
+  padding: 10px;
+  padding-bottom: 80px;
+  width: 400px;
+  border: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    display: flex;
+    flex-direction: row;
+    h2 {
+      font-weight: lighter;
+
+    }
+    .booking-price {
+      font-weight: bolder;
+      padding-left: 5px;
+    }
+  }
 }
