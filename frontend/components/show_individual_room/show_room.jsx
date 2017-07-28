@@ -26,8 +26,19 @@ class ShowRoom extends React.Component {
     );
   }
 
+  showBooking() {
+    return(
+      <div>
+        <h2>Book this room!</h2>
+        <TripsContainer />
+      </div>
+
+    );
+  }
+
   render(){
     const room = this.props.room;
+    const showBooking = this.props.currentUser ? this.showBooking() : "";
     return(
       <div>
         {this.bannerPicture()}
@@ -43,8 +54,7 @@ class ShowRoom extends React.Component {
             <a href="#host"></a>
           </div>
           <div className="floating-booking">
-            <h2>Book this room!</h2>
-            <TripsContainer />
+            { showBooking }
           </div>
         </div>
       </div>
