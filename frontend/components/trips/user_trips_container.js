@@ -1,25 +1,22 @@
 import { connect } from 'react-redux';
 import values from 'lodash/values';
-import Booking from './booking';
+import Trips from './trips';
 import { addTrip, viewTrips, getAllTripsSpecific } from '../../actions/trip_actions';
 import { withRouter } from 'react-router';
 
-const mapStateToProps = ({ session, trips, rooms }, ownProps) => {
+const mapStateToProps = ({ session, trips }, ownProps) => {
   return({
   trips: values(trips.trips) || [],
-  room: rooms.entities[ownProps.match.params.id] || [],
   currentUser: session.currentUser
 });};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    viewTrips: () => dispatch(viewTrips()),
-    addTrip: trip => dispatch(addTrip(trip)),
-    getAllTripsSpecific: (id) => dispatch(getAllTripsSpecific(id))
+    viewTrips: () => dispatch(viewTrips())
   };
 };
 
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Booking));
+)(Trips));

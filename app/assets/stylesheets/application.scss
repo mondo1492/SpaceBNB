@@ -28,6 +28,9 @@
  }
 
  .gm-style-iw + div {display: none;}
+ .booking {
+   padding-bottom: 1000px;
+ }
 
 @import './components/colors.scss';
 @import './components/header.scss';
@@ -42,6 +45,7 @@
 @import './components/review-create.scss';
 @import './specific_styling/react_stars.scss';
 @import './components/review_index.scss';
+@import 'react-dates/lib/css/_datepicker.css';
 //
 // body {
 //    min-width:1000px !important;
