@@ -18,20 +18,19 @@ class Trips extends React.Component {
     return(
       <div>
         <h2>Your trips!</h2>
-        <ul>
+        <ul className="trip-index">
           {trips.map((trip, i) => (
             <li key={`trip-${i}`}>
-              <div>
+              <div className="trip-item">
                 <img src={ trip.room_url ? trip.room_url : "" }></img>
                 <div>
                   <h2>Your Trip with { trip.host_name ? trip.host_name : "" }</h2>
                   <h4>Beginning on { trip.start_date ? this.formatDate(trip.start_date) : "" }</h4>
                   <h4>Ending on { trip.end_date ? this.formatDate(trip.end_date) : "" }</h4>
-                  <h4>Costing on { trip.total_cost ? trip.total_cost : "" }</h4>
+                  <h4>Costing ${ trip.total_cost ? trip.total_cost : "" }</h4>
                   <h4>At { trip.room_address ? trip.room_address : "" }</h4>
                 </div>
               </div>
-              <h4>${ trip ? trip.total_cost : "" }</h4>
             </li>
           ))}
         </ul>

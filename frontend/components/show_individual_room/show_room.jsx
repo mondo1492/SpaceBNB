@@ -43,6 +43,7 @@ class ShowRoom extends React.Component {
             <a href="#host"></a>
           </div>
           <div className="floating-booking">
+            <h2>Book this room!</h2>
             <TripsContainer />
           </div>
         </div>

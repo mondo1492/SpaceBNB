@@ -44,8 +44,8 @@ class GoogleMap extends React.Component {
       // this.MarkerManager.updateMarkers(this.props.rooms);
     };
     let changeBed = document.getElementById('change-bed-number');
-    let changeLocation = document.getElementById('searchTextFieldHome');
-    let searchBoxHeader = new google.maps.places.SearchBox(changeLocation);
+    // let changeLocation = document.getElementById('searchTextFieldHome');
+    // let searchBoxHeader = new google.maps.places.SearchBox(changeLocation);
     // input.addEventListener('click', ()=> console.log("works"));
     google.maps.event.addListener(this.searchMap, 'bounds_changed', this.updateMap);
 

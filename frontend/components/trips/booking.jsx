@@ -56,7 +56,7 @@ class Booking extends React.Component {
 
   showButton(displayCost) {
     return(
-      <button value={displayCost} onClick={this.update('total_cost')}>Calculate Price</button>
+      <button className="calculate-button" value={displayCost} onClick={this.update('total_cost')}>Calculate Price</button>
     );
 
   }
@@ -67,20 +67,25 @@ class Booking extends React.Component {
     const show = bool ? this.showButton(displayCost) : "";
     return(
       <div>
-        <h2>Number of guests</h2>
-        <input
-          type="text"
-          value={this.state.booking.num_guests}
-          onChange={this.update('num_guests')}
-          placeholder="Number of Guests"
-        />
-        <DateRangePicker
-              startDate={ this.state.startDate }
-              endDate={ this.state.endDate }
-              onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
-              focusedInput={ this.state.focusedInput }
-              onFocusChange={ focusedInput => this.setState({ focusedInput }) }
+        <div>
+          <h2>Guests</h2>
+          <input
+            type="text"
+            value={this.state.booking.num_guests}
+            onChange={this.update('num_guests')}
+            placeholder="Number of Guests"
           />
+        </div>
+        <div>
+          <h2>Dates</h2>
+          <DateRangePicker
+                startDate={ this.state.startDate }
+                endDate={ this.state.endDate }
+                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
+                focusedInput={ this.state.focusedInput }
+                onFocusChange={ focusedInput => this.setState({ focusedInput }) }
+            />
+        </div>
         {show}
       </div>
 
@@ -89,9 +94,9 @@ class Booking extends React.Component {
 
   book(displayCost) {
     return(
-      <div>
+      <div className="book-room-show-price">
         <h2>Your total cost is ${displayCost}</h2>
-        <button onClick={this.handleSubmit}>Book This Room!</button>
+        <button className="book-button" onClick={this.handleSubmit}>Book This Room!</button>
       </div>
 
     );
@@ -106,11 +111,7 @@ class Booking extends React.Component {
     const display = this.state.booking.total_cost ? this.book(displayCost) : this.calculate(displayCost);
     return(
       <div className="booking">
-
-
-
-
-            {display}
+        {display}
       </div>
     );
   }
