@@ -65,6 +65,7 @@ class RoomReviews extends React.Component {
       <div>
         <AddReviewModal reviewerName={reviewerName} roomId= {roomId} addReview= {this.props.addReview}/>
       </div>
+
     );
   }
 

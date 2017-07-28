@@ -30,7 +30,7 @@
  .gm-style-iw + div {display: none;}
 
  .booking {
-   padding-bottom: 1000px;
+   padding-bottom: 500px;
  }
 
 @import './components/colors.scss';
@@ -46,9 +46,9 @@
 @import './components/review-create.scss';
 @import './specific_styling/react_stars.scss';
 @import './components/review_index.scss';
-@import 'react-dates/lib/css/_datepicker.css';
 @import './components/trips.scss';
 @import './components/listing.scss';
+@import './components/react-dates.scss';
 //
 // body {
 //    min-width:1000px !important;

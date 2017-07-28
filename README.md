@@ -1,21 +1,3 @@
-* Ruby version
-* System dependencies
-* Configuration
-* Database creation
-* Database initialization
-* How to run the test suite
-* Services (job queues, cache servers, search engines, etc.)
-* Deployment instructions
-
-
-— A brief description of what your site is. If it’s a clone, mention that.
-— A description of some (but NOT all ) of your sites features
-— Some screenshots to show off your pretty design and cool features. Some people like to use animated GIFs.
-— One or two code snippets showing technical achievements you’re proud of.
-— Links to your design docs: development README, schema, etc.
-— Possibly a discussion of future features you would like to implement
-Expect all this to take two to four hours to put together. I recommend you start working on it by 1:00 at the latest.
-
 # Spacebnb
 URL: [Live Link](https://space-bnb.herokuapp.com)
 
@@ -32,6 +14,8 @@ Spacebnb is an Airbnb clone with a space-theme twist.  It is a full-stack, singl
 
 ## User Authentication
 On the back-end, an encrypted, hashed password is stored in the database (passwords are never saved to the database). On log-in, the provided password is rehashed and compared to the encrypted password in order to verify the log-in.
+
+![login_flow](/app/assets/images/login.gif)
 
 ## Home Show Page
 All homes are stored in the database, which contains columns for:
@@ -57,37 +41,38 @@ Below is an example of a state shape for the home index page:
     lat: 41.1706021488593,
     lng: -74.9294859019342,
     price: 138,
-    title: "Three Island",
-    description: "Lorem Ipsum",
-    address: "79886 Skiles Mission, Lake Marlee, Mauritania",
+    title: "Space room",
+    description: "Best room",
+    address: "1 Mars St",
     host_id: 3,
     average_stars: 2.4,
     max_guests: 12,
     beds: 12,
     room_type: "Private Room"
-    pic_url: "http://s3.amazonaws.com/safehavns-dev/homes/images/000/000/001/original/0.jpg?1500573048"
+    pic_url: "http://"
   },
   2: {
     id: 1,
     lat: 41.1706021488593,
     lng: -74.9294859019342,
     price: 138,
-    title: "Three Island",
+    title: "Cool Room",
     description: "Lorem Ipsum",
-    address: "79886 Skiles Mission, Lake Marlee, Mauritania",
+    address: "2 Europa Drive",
     host_id: 3,
     average_stars: 2.4,
     max_guests: 12,
     beds: 12,
     room_type: "Private Room"
-    pic_url: "http://s3.amazonaws.com/safehavns-dev/homes/images/000/000/001/original/0.jpg?1500573048"
+    pic_url: "http://"
   }
 }
 ```
 
-
 ## Map Filters
 Spacebnb offers real-time map-filtering based map location. The Redux state is updated with a list of all the homes matching both the filter query and location bounds. Map markers are then populated on the map as an overlay for every location stored in the state. With every filter or idle state of the map, old map markers are replaced with new map markers; the bounds also resize automatically when zooming in or out of the map.
+
+![search](/app/assets/images/map_search.gif)
 
 #### Implementation
 
@@ -127,9 +112,15 @@ Here is an example of a filter state slice:
   }
 ```
 
-## Booking a Trip
-All trips (bookings) are stored in one table in the database, which contains columns for `id`, the `guest_id` that references a guest (user), the `room_id` that references the booked home, and the `start_date`, `end_date`, and `total_cost` of the trip.
+## Adding a booking
+![create_listing](/app/assets/images/create_listing.gif)
 
+
+## Booking a Trip
+All trips (bookings) are stored in one table in the database, which contains columns for `id`, the `guest_id` that references a guest (user), the `room_id` that references the booked home, and the `start_date`, `end_date`, and `total_cost` of the trip. Overlapping booking requests are not allowed and blocked out on calendar.
+
+
+![booking](/app/assets/images/booking.gif)
 
 ### Viewing Trips
 Users can only view their own trips. The user can view details about their trip, the amount they paid, and if they have to, cancel their trips.
@@ -138,17 +129,16 @@ Users can only view their own trips. The user can view details about their trip,
 ## Reviews
 A review requires a rating (1-5) and a body. Upon creating a review, the review will be posted on the respective home show page. In the backend, each review will be tallied and the average rating calculated. This information will be displayed on the home index page.
 
+![review](/app/assets/images/review.gif)
+
 ## Future Concepts
 During my two week course of development, I discovered many more implementation that can deliver a better user experience listed below:
 
 #### User Profile Pages
 Along with reviews, adding user profiles will improve the utility, and give a social element to the app.
 
-#### Improved Booking Logic
-There is currently no model validation or validations to determine if the home is reserved, making double-booking permissible. I hope to tackle this problem by graying out dates in the calendar and also add a front-end validation as well as adding a model level validation. HA i did this
-
 #### More Filters and Live Filtering
 Filtering by amenities and housing accommodations will improve usability. Adding dropdowns and modals will allow the expansion of such filters.
 
 #### Improved Styling/Design
-Compared with AirBnB, there are countless UX design tweaks that I can improve on such as: adding a carousel that spins through photos of the home. Adding a slider bar to filter budgets and guest size.
+Compared with Airbnb, there are countless UX design tweaks that I can improve on such as: adding a carousel that spins through photos of the home. Adding a slider bar to filter budgets and guest size.
