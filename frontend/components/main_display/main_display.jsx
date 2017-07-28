@@ -28,7 +28,7 @@ class MainDisplay extends React.Component {
             </Link>
             <h4>${ room ? room.price : "" } { room ? room.title : "" } </h4>
             <h5>{ room ? room.room_type : "" } · { room ? room.beds : "" } beds</h5>
-            <ReactStars className="react-stars" count={5} size={10} color2={'#00BEC5'} value={room.review_rating ? room.review_rating : 0} edit={false} />
+            <ReactStars className="react-stars" count={5} size={10} color2={'#00BEC5'} value={room ? room.review_rating : 0} edit={false} />
           </li>
         ))}
       </ul>

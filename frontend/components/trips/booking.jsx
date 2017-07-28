@@ -6,6 +6,7 @@ class Booking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      blockout_dates: [],
       booking: {
         num_guests: "",
         total_cost: ""
@@ -15,8 +16,10 @@ class Booking extends React.Component {
     this.updateCost = this.updateCost.bind(this);
   }
 
-  componentWillMount() {
-    this.props.getAllTripsSpecific(this.props.match.params.id);
+  componentDidMount() {
+    this.props.getAllTripsSpecific(this.props.match.params.id).then(()=> {
+      this.blockOutDates();
+    });
   }
 
 
@@ -75,6 +78,7 @@ class Booking extends React.Component {
     subDays.forEach( (day) => {
       allBlockedOutDays.push(String(day));
     });
+    this.setState({blockout_dates: allBlockedOutDays});
     return allBlockedOutDays;
   }
 
@@ -98,7 +102,7 @@ class Booking extends React.Component {
     let arr = this.selectedOutDates(this.state.startDate['_d'], this.state.endDate['_d']);
     let isInDate = false;
     arr.forEach((day) => {
-      if (this.blockOutDates().includes(""+day+"")) {
+      if (this.state.blockout_dates.includes(""+day+"")) {
         isInDate = true;
       }
     });
@@ -129,7 +133,7 @@ class Booking extends React.Component {
     const showError = this.clientSideCheck() ?   this.showBookingError() : "";
     const showErrorDisplay = (this.state.endDate && this.state.startDate) ? showError : "";
     const show = (bool2 && !this.clientSideCheck()) ? this.showButton(displayCost) : "";
-    const blockedDates = this.blockOutDates();
+    const blockedDates = this.state.blockout_dates;
     return(
       <div className="guest-booking">
         <div>
@@ -147,7 +151,7 @@ class Booking extends React.Component {
           <DateRangePicker
                 startDate={ this.state.startDate }
                 endDate={ this.state.endDate }
-                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
+                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate, blockout_dates: blockedDates })}
                 focusedInput={ this.state.focusedInput }
                 onFocusChange={ focusedInput => this.setState({ focusedInput }) }
                 isDayBlocked={ (day) => blockedDates.includes(""+ day['_d']+"")}
@@ -195,7 +199,7 @@ class Booking extends React.Component {
 
 
   render() {
-    this.blockOutDates();
+    console.log(this.state);
     let displayCost = 0;
     if (this.state.startDate && this.state.endDate) {
       displayCost = this.state.endDate.diff(this.state.startDate, 'days');
