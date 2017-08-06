@@ -20,7 +20,7 @@ class GeoLocation extends React.Component {
      let input = document.getElementById('searchTextField');
     // wrap the mapDOMNode in a Google Map
     // let input = document.getElementById('pac-input');
-    let searchBox = new google.maps.places.SearchBox(input);
+    let searchBox = new google.maps.places.Autocomplete(input);
     // this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     this.registerListeners(searchBox, map);
 
