@@ -45,7 +45,6 @@ class CreateRoom extends React.Component {
     );
   }
 
-
   update(field) {
     return e => {
       this.setState({
